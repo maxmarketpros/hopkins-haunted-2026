@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, JsonLd } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Stories from the woods: Simpsonville's haunted history, what to expect on the Hopkins Haunted Attraction trail, tips for your visit, and seasonal jobs in Greenville County.",
+    "Simpsonville's haunted history, what to expect on the Hopkins Haunted Attraction trail, tips for your visit, and seasonal jobs in Greenville County.",
   alternates: { canonical: "/blog/" },
   openGraph: { title: "Blog | Hopkins Haunted Attraction", url: "/blog/", images: [{ url: "/og/blog.jpg", width: 1200, height: 630 }] },
 };

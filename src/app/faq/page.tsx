@@ -8,9 +8,9 @@ import { contact, faq, knowBeforeYouGo, links } from "@/content/site";
 import { breadcrumbJsonLd, faqJsonLd, JsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions",
+  title: { absolute: "FAQ: Touch Pass, Kids, Parking | Hopkins Haunted" },
   description:
-    "Do the actors touch you? How long is the trail? Is it too scary for kids? Parking, tickets at the gate, coolers. Everything guests ask before visiting Hopkins Haunted Attraction in Simpsonville, SC.",
+    "Do the actors touch you? How long is the trail? Too scary for kids? Parking, gate tickets and coolers, answered by Hopkins Haunted Attraction, Simpsonville SC.",
   alternates: { canonical: "/faq/" },
   openGraph: { title: "FAQ | Hopkins Haunted Attraction", url: "/faq/", images: [{ url: "/og/faq.jpg", width: 1200, height: 630 }] },
 };

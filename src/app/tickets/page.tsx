@@ -6,15 +6,15 @@ import { Section } from "@/components/system/Section";
 import { Countdown } from "@/components/tickets/Countdown";
 import { DateGrid } from "@/components/tickets/DateGrid";
 import { PassTile } from "@/components/tickets/PassTile";
-import { contact, knowBeforeYouGo, links, passes, season } from "@/content/site";
+import { contact, knowBeforeYouGo, links, passes, season, sellsOutLine } from "@/content/site";
 import { breadcrumbJsonLd, eventsJsonLd, JsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Tickets & Dates 2026",
+  title: "Tickets & 2026 Dates",
   description:
-    "2026 season dates, hours and passes for Hopkins Haunted Attraction in Simpsonville, SC. Nine nights, October 16 through November 1, 7:30 PM to midnight. Haunt Pass $25, Touch Pass $30, Kids $15, VIP Parking $10.",
+    "Nine nights, Oct 16 – Nov 1, 7:30 PM to midnight in Simpsonville, SC. Haunt Pass $25, Touch Pass $30, Kids $15, VIP Parking $10. Buy online, skip the line.",
   alternates: { canonical: "/tickets/" },
-  openGraph: { title: "Tickets & Dates 2026 | Hopkins Haunted Attraction", url: "/tickets/", images: [{ url: "/og/tickets.jpg", width: 1200, height: 630 }] },
+  openGraph: { title: "Tickets & 2026 Dates | Hopkins Haunted Attraction", url: "/tickets/", images: [{ url: "/og/tickets.jpg", width: 1200, height: 630 }] },
 };
 
 export default function TicketsPage() {
@@ -22,8 +22,8 @@ export default function TicketsPage() {
     <>
       <PageHero
         blaze={`Season ${season.year}`}
-        title="Nine nights in the woods"
-        lede={`${season.hoursLine}. Tickets sell out fast.`}
+        title="Tickets and 2026 dates"
+        lede={`Nine nights in the woods, ${season.hoursShort.toLowerCase()}. ${sellsOutLine}`}
         image="/images/generated/ticket-booth.webp"
         imageAlt="A wooden ticket booth strung with bare bulbs at the edge of a foggy field at dusk"
         imagePosition="center 40%"

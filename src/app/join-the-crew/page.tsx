@@ -9,9 +9,9 @@ import { contact, crew, links } from "@/content/site";
 import { breadcrumbJsonLd, JsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Join the Haunt Crew · Seasonal Entertainment Jobs in Greenville County",
+  title: { absolute: "Scare Actor Jobs in Greenville County | Join the Haunt Crew" },
   description:
-    "Scare actors, monster handlers and makeup artists wanted for the 2026 Scare Team at Hopkins Haunted Attraction in Simpsonville, SC. No experience necessary. Premier seasonal entertainment jobs in Greenville County. Apply now.",
+    "Scare actors, monster handlers and makeup artists wanted at Hopkins Haunted Attraction in Simpsonville, SC. Seasonal jobs, no experience needed. Apply now.",
   alternates: { canonical: "/join-the-crew/" },
   openGraph: { title: "Join the Haunt Crew | Hopkins Haunted Attraction", url: "/join-the-crew/", images: [{ url: "/og/crew.jpg", width: 1200, height: 630 }] },
 };

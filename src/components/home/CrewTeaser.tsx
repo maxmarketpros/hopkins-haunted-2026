@@ -7,37 +7,36 @@ import blur from "@/content/blur.json";
 const blurMap = blur as Record<string, string>;
 const IMG = "/images/site/join-the-haunt-crew.webp";
 
+/** A slim band: the old site's crew artwork, one line, one button. The jobs copy lives on /join-the-crew. */
 export function CrewTeaser() {
   return (
-    <section id="crew" className="py-24 md:py-40">
-      <div className="container-page grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="lg:order-2 lg:col-span-6">
-          <h2 className="display text-display-lg text-bone">Your nightmare job is here.</h2>
-          <p className="mt-8 max-w-lg text-lede text-bone/80">
-            Scare actors, monster handlers, makeup artists and set crew. No experience necessary.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-8">
-            <Button href={links.apply} size="lg">
-              Apply now
-            </Button>
-            <Button href="/join-the-crew" variant="ghost">
-              About the crew
-            </Button>
-          </div>
-        </Reveal>
-        <Reveal className="lg:order-1 lg:col-span-6" delay={120}>
+    <section id="crew" className="border-y border-bone/10 py-20 md:py-28">
+      <div className="container-page grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+        <Reveal className="lg:col-span-4">
           <figure className="overflow-hidden rounded-[2px] bg-soot">
             <Image
               src={IMG}
-              alt="Join the Haunt Crew: two characters flank red lettering under bare winter trees"
+              alt="Join the Haunt Crew: two Hopkins Haunted Attraction characters flank red lettering under bare winter trees"
               width={1800}
               height={1200}
-              sizes="(min-width: 1024px) 600px, 100vw"
+              sizes="(min-width: 1024px) 400px, 100vw"
               placeholder="blur"
               blurDataURL={blurMap[IMG]}
               className="h-auto w-full"
             />
           </figure>
+        </Reveal>
+        <Reveal className="lg:col-span-8" delay={120}>
+          <h2 className="display text-display-md text-bone">Your nightmare job is here.</h2>
+          <p className="mt-5 max-w-xl text-bone/80">Scare actors, monster handlers, makeup artists and set crew for the 2026 season. No experience necessary.</p>
+          <div className="mt-8 flex flex-wrap items-center gap-8">
+            <Button href={links.apply} size="lg">
+              Apply now
+            </Button>
+            <Button href="/join-the-crew" variant="ghost">
+              Scare actor jobs
+            </Button>
+          </div>
         </Reveal>
       </div>
     </section>

@@ -166,4 +166,4 @@ This is what actually moves "near me" rankings. A checklist for the client:
 
 - **v1** (main): first build. Rejected: busy, text-heavy, compact, small logo, stub-style passes.
 - **v2** (`redesign-v2`, bc500c7): poster type, roomy layout, real photos, flat pass tiles. Accepted as the direction.
-- **v3** (this plan): hero without the logo, search-first copy and metadata, plan-your-night and FAQ on the home page.
+- **v3** (`redesign-v2`, built Sept 18, 2026): hero without the logo, search-first copy and metadata, plan-your-night and FAQ on the home page. Not done in this pass: the OG image regeneration, the four blog posts (Part 6), and the off-site checklist (Part 7, client's). The About page kept the owner's tagline "The sinister woods of the 1800s" as its H1 instead of "The haunt".

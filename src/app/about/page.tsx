@@ -6,15 +6,15 @@ import { PageHero } from "@/components/system/PageHero";
 import { Reveal } from "@/components/system/Reveal";
 import { Section } from "@/components/system/Section";
 import { aboutSections, links, site, trailCopy } from "@/content/site";
-import { breadcrumbJsonLd, JsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, JsonLd, videoJsonLd } from "@/lib/jsonld";
 import blur from "@/content/blur.json";
 
 const blurMap = blur as Record<string, string>;
 
 export const metadata: Metadata = {
-  title: "About the Haunt",
+  title: { absolute: "About the Haunt: a Haunted Farm in Simpsonville, SC" },
   description:
-    "Hopkins Haunted Attraction is a fully immersive haunted trail through the sinister woods of an 1800s farm in Simpsonville, SC. Cinematic sets, live actors, about 30 minutes in the dark. Watch the trailer.",
+    "Hopkins Haunted Attraction is a haunted trail through the woods of an 1800s farm in Simpsonville, SC. Cinematic sets, live actors, 30 minutes in the dark.",
   alternates: { canonical: "/about/" },
   openGraph: { title: "About the Haunt | Hopkins Haunted Attraction", url: "/about/", images: [{ url: "/og/about.jpg", width: 1200, height: 630 }] },
 };
@@ -32,7 +32,7 @@ export default function AboutPage() {
         blaze={`Since ${site.since}`}
         title="The sinister woods of the 1800s"
         image="/images/site/trail-chainsaw.webp"
-        imageAlt="A masked actor raises a chainsaw overhead in green light beside an old wooden door on the trail"
+        imageAlt="A masked scare actor raises a chainsaw in green light beside an old wooden door on the Hopkins Haunted Attraction trail in Simpsonville, SC"
         imagePosition="center 30%"
         size="lg"
         actions={
@@ -162,7 +162,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <JsonLd data={breadcrumbJsonLd([{ name: "About", path: "/about/" }])} />
+      <JsonLd data={[videoJsonLd(), breadcrumbJsonLd([{ name: "About", path: "/about/" }])]} />
     </>
   );
 }

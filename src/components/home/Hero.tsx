@@ -1,55 +1,48 @@
-import Image from "next/image";
 import { Button } from "@/components/system/Button";
-import { contact, links, season, site } from "@/content/site";
+import { hero, links } from "@/content/site";
+import { BillingBlock } from "./BillingBlock";
 import { HeroVideo } from "./HeroVideo";
 
-/** Full-viewport hero: the logo, one line of facts, one way to buy. */
+/**
+ * The one-sheet: full-viewport video, bottom-left billing.
+ * The H1 is the site's ranking line and the biggest type on the site. No logo; the nav carries it.
+ */
 export function Hero() {
+  const lines = hero.h1;
   return (
     <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-soot">
       <HeroVideo />
 
-      <div className="container-page relative flex flex-1 flex-col items-center justify-center pb-24 pt-32 text-center md:pb-28 md:pt-36">
-        <div className="hero-rise flex w-full flex-col items-center">
-          <Image
-            src="/brand/logo.png"
-            alt={site.name}
-            width={1600}
-            height={600}
-            priority
-            sizes="(min-width: 1024px) 880px, 92vw"
-            className="h-auto w-[min(100%,880px)] drop-shadow-[0_14px_50px_rgb(0_0_0_/_0.75)]"
-          />
-          <p className="label-mono mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[0.8125rem] text-bone/85 md:text-[0.9375rem]">
-            <span>{season.rangeShort}</span>
-            <span aria-hidden className="text-blaze">·</span>
-            <span>{season.hoursShort}</span>
-            <span aria-hidden className="hidden text-blaze sm:inline">·</span>
-            <span className="hidden sm:inline">
-              {contact.address.city}, {contact.address.state}
+      <div className="container-page relative flex flex-1 flex-col justify-end pb-14 pt-32 md:pb-20 md:pt-40">
+        <p className="label-mono hero-rise flex items-center gap-3 text-blaze">
+          <span aria-hidden className="blaze-mark" />
+          <span>{hero.eyebrow}</span>
+        </p>
+        <h1 className="display mt-6 text-[clamp(3rem,1.25rem+7.5vw,8.5rem)] leading-[0.9] text-bone md:mt-8">
+          {lines.map((line, i) => (
+            <span
+              key={line}
+              className={i === lines.length - 1 ? "hero-rise block text-blaze" : "hero-rise block"}
+              style={{ animationDelay: `${120 + i * 110}ms` }}
+            >
+              {line}
             </span>
-          </p>
-          <div className="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:gap-8">
-            <Button href={links.tickets} size="lg">
-              Get tickets
-            </Button>
-            <Button href="#trailer" variant="ghost">
-              Watch the trailer
-            </Button>
-          </div>
+          ))}
+        </h1>
+        <p className="hero-rise mt-8 max-w-xl text-lede text-bone/85" style={{ animationDelay: "520ms" }}>
+          {hero.lede}
+        </p>
+        <div className="hero-rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-5" style={{ animationDelay: "620ms" }}>
+          <Button href={links.tickets} size="lg">
+            Get tickets
+          </Button>
+          <Button href="#trailer" variant="ghost">
+            Watch the trailer
+          </Button>
         </div>
       </div>
 
-      <a
-        href="#glance"
-        aria-label="Scroll down"
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-bone/50 transition-colors hover:text-bone md:block"
-      >
-        <svg width="22" height="34" viewBox="0 0 22 34" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-          <rect x="1" y="1" width="20" height="32" rx="10" />
-          <path d="M11 9v7" className="animate-bounce" />
-        </svg>
-      </a>
+      <BillingBlock className="hero-rise" style={{ animationDelay: "760ms" }} />
     </section>
   );
 }

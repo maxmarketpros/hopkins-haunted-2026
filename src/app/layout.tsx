@@ -5,7 +5,7 @@ import { Grain } from "@/components/chrome/Grain";
 import { MobileCtaBar } from "@/components/chrome/MobileCtaBar";
 import { Nav } from "@/components/chrome/Nav";
 import { site } from "@/content/site";
-import { organizationJsonLd, JsonLd } from "@/lib/jsonld";
+import { organizationJsonLd, JsonLd, websiteJsonLd } from "@/lib/jsonld";
 import "./globals.css";
 
 const anton = Anton({ weight: "400", subsets: ["latin"], variable: "--font-anton", display: "swap" });
@@ -34,6 +34,11 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
   alternates: { types: { "application/rss+xml": `${site.url}/blog/feed.xml` } },
+  // Paste the tokens from Search Console / Bing Webmaster into Netlify env vars; no code change needed.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } : undefined,
+  },
 };
 
 export const viewport: Viewport = {
@@ -58,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Footer />
         <MobileCtaBar />
         <Grain />
-        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
       </body>
     </html>
   );

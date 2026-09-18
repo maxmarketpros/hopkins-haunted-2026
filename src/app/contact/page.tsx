@@ -6,23 +6,26 @@ import { Button } from "@/components/system/Button";
 import { PageHero } from "@/components/system/PageHero";
 import { Reveal } from "@/components/system/Reveal";
 import { Section } from "@/components/system/Section";
-import { contact, links, season } from "@/content/site";
+import { contact, driveTimes, links, season } from "@/content/site";
 import { breadcrumbJsonLd, JsonLd } from "@/lib/jsonld";
 
+const title = "Directions & Contact | Hopkins Haunted, Simpsonville SC";
+const greenville = driveTimes.find((d) => d.from === "Downtown Greenville");
+
 export const metadata: Metadata = {
-  title: "Contact & Directions",
+  title: { absolute: title },
   description:
-    "Hopkins Haunted Attraction is at 3717 Fork Shoals Rd., Simpsonville, SC 29680. Call (864) 243-4010 or email hopkinshauntedattraction@gmail.com. Map, directions, hours and parking.",
+    "Hopkins Haunted Attraction is at 3717 Fork Shoals Rd., Simpsonville, SC 29680, 30 minutes from Greenville. Map, drive times, parking, phone and email.",
   alternates: { canonical: "/contact/" },
-  openGraph: { title: "Contact & Directions | Hopkins Haunted Attraction", url: "/contact/", images: [{ url: "/og/contact.jpg", width: 1200, height: 630 }] },
+  openGraph: { title, url: "/contact/", images: [{ url: "/og/contact.jpg", width: 1200, height: 630 }] },
 };
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
-        blaze="Contact & directions"
-        title="Fork Shoals Road, after dark"
+        blaze="Fork Shoals Road, after dark"
+        title="Directions and contact"
         lede={contact.address.full}
         image="/images/generated/farm-lane-headlights.webp"
         imageAlt="Headlights glowing through fog on a gravel farm lane lined with pines, a wooden arrow sign at the turn"
@@ -93,7 +96,35 @@ export default function ContactPage() {
         </div>
       </Section>
 
-      <Section title="Send a message" className="bg-soot">
+      <Section id="drive-times" title="Getting here" className="scroll-mt-24 bg-soot">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <Reveal className="lg:col-span-5">
+            <p className="text-lede text-bone/80">
+              The farm is on Fork Shoals Road south of Simpsonville, about {greenville?.minutes} minutes from downtown Greenville and an easy drive from anywhere in the
+              Upstate. Put the address in your maps app; the last stretch is dark country road, so leave a little early.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-6">
+              <Button href={links.directions}>Open in Google Maps</Button>
+              <Button href="/tickets" variant="ghost">
+                Tickets and 2026 dates
+              </Button>
+            </div>
+          </Reveal>
+          <Reveal className="lg:col-span-7" delay={100}>
+            <dl className="grid gap-x-12 sm:grid-cols-2">
+              {driveTimes.map((d) => (
+                <div key={d.from} className="flex items-baseline justify-between gap-4 border-b border-bone/10 py-4">
+                  <dt className="text-lede text-bone">{d.from}</dt>
+                  <dd className="label-mono text-bone/60">about {d.minutes} min</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-4 text-[0.8125rem] text-bone/50">Drive times are approximate and depend on traffic.</p>
+          </Reveal>
+        </div>
+      </Section>
+
+      <Section title="Send a message">
         <div className="grid gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
             <MessageForm />

@@ -7,6 +7,7 @@ import blur from "@/content/blur.json";
 const blurMap = blur as Record<string, string>;
 const IMG = "/images/site/trail-chainsaw.webp";
 
+/** The owner's heading and two of the owner's paragraphs, beside the chainsaw photo from the old site. */
 export function TrailIntro() {
   return (
     <section id="trail" className="py-24 md:py-40">
@@ -15,7 +16,7 @@ export function TrailIntro() {
           <figure className="relative aspect-[3/4] overflow-hidden rounded-[2px] bg-soot">
             <Image
               src={IMG}
-              alt="A masked actor raises a chainsaw overhead in green light beside an old wooden door on the trail"
+              alt="A masked scare actor raises a chainsaw in green light beside an old wooden door on the Hopkins Haunted Attraction trail in Simpsonville, SC"
               fill
               sizes="(min-width: 1024px) 600px, 100vw"
               placeholder="blur"
@@ -26,20 +27,17 @@ export function TrailIntro() {
         </Reveal>
 
         <Reveal className="lg:col-span-6" delay={120}>
-          <h2 className="display text-display-lg text-bone">
-            Thirty minutes.
-            <br />
-            On foot.
-            <br />
-            <span className="text-blaze">In the dark.</span>
-          </h2>
-          <p className="mt-8 max-w-lg text-lede text-bone/80">{trailCopy.paragraphs[1]}</p>
+          <h2 className="display text-display-lg text-bone">{trailCopy.heading}</h2>
+          <div className="mt-8 max-w-lg space-y-5 text-bone/80">
+            <p className="text-lede">{trailCopy.paragraphs[1]}</p>
+            <p>{trailCopy.paragraphs[3]}</p>
+          </div>
           <div className="mt-10 flex flex-wrap items-center gap-8">
             <Button href="/about" variant="secondary" size="lg">
               About the haunt
             </Button>
             <Button href="/tickets" variant="ghost">
-              Dates and passes
+              Tickets and 2026 dates
             </Button>
           </div>
         </Reveal>
