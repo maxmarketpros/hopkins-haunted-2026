@@ -10,10 +10,10 @@ const IMG = "/images/site/join-the-haunt-crew.webp";
 /** A slim band: the old site's crew artwork, one line, one button. The jobs copy lives on /join-the-crew. */
 export function CrewTeaser() {
   return (
-    <section id="crew" className="border-y border-bone/10 py-20 md:py-28">
+    <section id="crew" className="border-y border-bone/10 py-16 md:py-28">
       <div className="container-page grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
         <Reveal className="lg:col-span-4">
-          <figure className="overflow-hidden rounded-[2px] bg-soot">
+          <figure className="max-w-[280px] overflow-hidden rounded-[2px] bg-soot sm:max-w-sm lg:max-w-none">
             <Image
               src={IMG}
               alt="Join the Haunt Crew: two Hopkins Haunted Attraction characters flank red lettering under bare winter trees"

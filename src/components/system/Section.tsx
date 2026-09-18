@@ -33,13 +33,13 @@ export function Section({
 }) {
   const sizeCls = { xl: "text-display-xl", lg: "text-display-lg", md: "text-display-md" }[titleSize];
   return (
-    <section id={id} className={cn("py-24 md:py-36", seam && "fog-seam", className)}>
+    <section id={id} className={cn("py-16 md:py-36", seam && "fog-seam", className)}>
       <div className={narrow ? "container-prose" : "container-page"}>
         {(blaze || title) && (
-          <header className={cn("mb-14 md:mb-20", align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-4xl", headerClassName)}>
+          <header className={cn("mb-10 md:mb-20", align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-4xl", headerClassName)}>
             {blaze && <Blaze label={blaze} className={cn("mb-5", align === "center" && "justify-center")} />}
             {title && <h2 className={cn("display text-bone", sizeCls)}>{title}</h2>}
-            {lede && <p className={cn("mt-6 text-lede text-bone/70 max-w-2xl", align === "center" && "mx-auto")}>{lede}</p>}
+            {lede && <p className={cn("mt-5 max-w-2xl text-bone/70 md:mt-6 md:text-lede", align === "center" && "mx-auto")}>{lede}</p>}
           </header>
         )}
         {children}

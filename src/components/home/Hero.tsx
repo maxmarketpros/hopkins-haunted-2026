@@ -13,12 +13,21 @@ export function Hero() {
     <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-soot">
       <HeroVideo />
 
-      <div className="container-page relative flex flex-1 flex-col justify-end pb-14 pt-32 md:pb-20 md:pt-40">
-        <p className="label-mono hero-rise flex items-center gap-3 text-blaze">
+      <div className="container-page relative flex flex-1 flex-col justify-end pb-10 pt-28 md:pb-20 md:pt-40">
+        <p className="label-mono hero-rise flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.6875rem] text-blaze md:text-[0.75rem]">
           <span aria-hidden className="blaze-mark" />
-          <span>{hero.eyebrow}</span>
+          {hero.eyebrow.map((part, i) => (
+            <span key={part} className={i === hero.eyebrow.length - 1 ? "hidden sm:inline" : undefined}>
+              {i > 0 && (
+                <span aria-hidden className="mr-3">
+                  ·
+                </span>
+              )}
+              {part}
+            </span>
+          ))}
         </p>
-        <h1 className="display mt-6 text-[clamp(3rem,1.25rem+7.5vw,8.5rem)] leading-[0.9] text-bone md:mt-8">
+        <h1 className="display mt-5 text-[clamp(3.25rem,1rem+8vw,8.5rem)] leading-[0.9] text-bone md:mt-8">
           {lines.map((line, i) => (
             <span
               key={line}
@@ -29,20 +38,20 @@ export function Hero() {
             </span>
           ))}
         </h1>
-        <p className="hero-rise mt-8 max-w-xl text-lede text-bone/85" style={{ animationDelay: "520ms" }}>
+        <p className="hero-rise mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-bone/85 md:mt-8 md:text-lede" style={{ animationDelay: "420ms" }}>
           {hero.lede}
         </p>
-        <div className="hero-rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-5" style={{ animationDelay: "620ms" }}>
-          <Button href={links.tickets} size="lg">
+        <div className="hero-rise mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8 md:mt-10" style={{ animationDelay: "520ms" }}>
+          <Button href={links.tickets} size="lg" className="w-full sm:w-auto">
             Get tickets
           </Button>
-          <Button href="#trailer" variant="ghost">
+          <Button href="#trailer" variant="ghost" className="self-start">
             Watch the trailer
           </Button>
         </div>
       </div>
 
-      <BillingBlock className="hero-rise" style={{ animationDelay: "760ms" }} />
+      <BillingBlock className="hero-rise" style={{ animationDelay: "660ms" }} />
     </section>
   );
 }

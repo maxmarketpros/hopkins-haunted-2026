@@ -11,7 +11,7 @@ const tips = [knowBeforeYouGo[0], knowBeforeYouGo[2], knowBeforeYouGo[4], knowBe
 export function PlanYourNight() {
   return (
     <Section id="plan" title="Plan your night" className="bg-soot">
-      <div className="grid gap-14 lg:grid-cols-3 lg:gap-12">
+      <div className="grid gap-12 lg:grid-cols-3">
         <Reveal>
           <h3 className="label-mono text-blaze">Where</h3>
           <p className="display mt-5 text-display-sm text-bone">
@@ -22,11 +22,11 @@ export function PlanYourNight() {
           <p className="mt-4 text-bone/80">
             On Fork Shoals Road south of Simpsonville, about {greenville?.minutes} minutes from downtown Greenville. Free parking on the farm.
           </p>
-          <dl className="mt-6 divide-y divide-bone/10 border-y border-bone/10">
+          <dl className="mt-6 grid border-t border-bone/10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-1">
             {driveTimes.map((d) => (
-              <div key={d.from} className="flex items-baseline justify-between gap-4 py-2.5">
+              <div key={d.from} className="flex items-baseline justify-between gap-3 border-b border-bone/10 py-2.5">
                 <dt className="text-bone/80">{d.from}</dt>
-                <dd className="label-mono text-[0.75rem] text-bone/60">about {d.minutes} min</dd>
+                <dd className="label-mono whitespace-nowrap text-[0.75rem] text-bone/60">about {d.minutes} min</dd>
               </div>
             ))}
           </dl>
@@ -71,8 +71,9 @@ export function PlanYourNight() {
         </Reveal>
       </div>
 
-      <Reveal className="mt-16 md:mt-20" delay={120}>
-        <DarkMap height="h-[360px] md:h-[480px]" />
+      {/* the embedded map is desktop only: phones get the Get directions button, which opens their maps app */}
+      <Reveal className="mt-12 hidden md:mt-20 md:block" delay={120}>
+        <DarkMap height="h-[480px]" />
       </Reveal>
     </Section>
   );

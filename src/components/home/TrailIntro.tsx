@@ -10,10 +10,10 @@ const IMG = "/images/site/trail-chainsaw.webp";
 /** The owner's heading and two of the owner's paragraphs, beside the chainsaw photo from the old site. */
 export function TrailIntro() {
   return (
-    <section id="trail" className="py-24 md:py-40">
-      <div className="container-page grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+    <section id="trail" className="py-16 md:py-40">
+      <div className="container-page grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
         <Reveal className="lg:col-span-6">
-          <figure className="relative aspect-[3/4] overflow-hidden rounded-[2px] bg-soot">
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-[2px] bg-soot sm:aspect-[3/4]">
             <Image
               src={IMG}
               alt="A masked scare actor raises a chainsaw in green light beside an old wooden door on the Hopkins Haunted Attraction trail in Simpsonville, SC"

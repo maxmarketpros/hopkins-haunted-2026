@@ -53,7 +53,9 @@ A movie one-sheet, bottom-left billing. Video loop stays (it works). The logo go
 
 **The signature: the billing block.** The strip along the foot of the hero is the poster's credits line. Four mono cells: the date groups, the hours, the starting price, and the countdown (which becomes "OPEN TONIGHT" in lantern gold on show nights). It replaces the v2 "At a glance" numerals, so the page gets shorter, not longer. On phones the strip sits under the hero as a 2×2 grid.
 
-**Why this H1.** "The Most Terrifying Haunted Attraction in Greenville County, SC" was the owner's H1 on the old site. v3 keeps the claim and the two search terms (*Greenville County*, *haunted trail*) and cuts it to six words. It's the one heading on the site allowed to be longer than five words, because it's the one Google reads first.
+**Why this H1.** "The Most Terrifying Haunted Attraction in Greenville County, SC" was the owner's H1 on the old site. v3 keeps the claim and the search terms and cuts it to four words: **"Greenville's scariest haunted trail."** (the client asked for shorter than the six-word first draft). Two lines on desktop, three on a phone.
+
+**Phone rules** (added after the client's mobile review): sections use 4rem padding instead of 6; the passes grid becomes a price list, one row per pass; the drive-time list is one column; the embedded map is hidden (Get directions opens the phone's maps app); the trailer frame drops the 16:9 letterbox and shows the 4:3 video edge to edge; the hero's primary button is full width; the crew and cast-poster images are capped at 280px.
 
 **The one sentence under it** carries the rest: *haunted trail*, *1800s farm*, *live actors*. The brand name is in the nav, the title tag and the schema; it doesn't need to be in the sentence.
 

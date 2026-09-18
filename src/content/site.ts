@@ -336,10 +336,11 @@ export const aboutSections = {
   },
 } as const;
 
-/** The one-sheet hero. The H1 is the owner's old claim, cut to six words. */
+/** The one-sheet hero. The H1 is the owner's old claim, cut to four words. */
 export const hero = {
-  eyebrow: `Haunted trail · Simpsonville, SC · Since 2023`,
-  h1: ["Greenville County’s", "most terrifying", "haunted trail."],
+  /** The last item is hidden on phones. */
+  eyebrow: ["Haunted trail", "Simpsonville, SC", "Since 2023"],
+  h1: ["Greenville’s scariest", "haunted trail."],
   lede: "Thirty minutes on foot through the sinister woods of an 1800s farm. Live actors, cinematic sets, and no way around.",
 } as const;
 

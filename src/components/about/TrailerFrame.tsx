@@ -27,8 +27,8 @@ export function TrailerFrame({ className }: { className?: string }) {
         <span>Since {site.since}</span>
       </div>
       <div className="relative overflow-hidden rounded-[2px] border border-bone/10 bg-soot shadow-[0_30px_80px_-30px_rgb(0_0_0_/_0.9)]">
-        {/* letterbox: content is 4:3 inside a 16:9 frame */}
-        <div className="relative aspect-video">
+        {/* letterbox on wide screens: content is 4:3 inside a 16:9 frame. Phones get the 4:3 frame edge to edge. */}
+        <div className="relative aspect-[4/3] md:aspect-video">
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative aspect-[4/3] h-full">
               {playing ? (

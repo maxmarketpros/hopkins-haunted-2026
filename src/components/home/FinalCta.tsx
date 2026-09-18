@@ -10,7 +10,7 @@ const IMG = "/images/site/cast-poster.webp";
 export function FinalCta() {
   return (
     <section className="relative isolate overflow-hidden">
-      <div className="container-page grid items-center gap-14 py-24 md:grid-cols-12 md:py-40">
+      <div className="container-page grid items-center gap-10 py-16 md:grid-cols-12 md:py-40">
         <Reveal className="md:col-span-7">
           <h2 className="display text-display-xl text-bone">
             Make it
@@ -27,7 +27,7 @@ export function FinalCta() {
           </div>
         </Reveal>
         <Reveal className="md:col-span-5" delay={120}>
-          <figure className="mx-auto max-w-sm overflow-hidden rounded-[2px] md:max-w-none">
+          <figure className="mx-auto max-w-[280px] overflow-hidden rounded-[2px] sm:max-w-sm md:max-w-none">
             <Image
               src={IMG}
               alt="Five Hopkins Haunted Attraction characters posed at a fence under a full moon"
