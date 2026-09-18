@@ -51,7 +51,7 @@ export function TrailIntro() {
             {facts.map((f) => (
               <li key={f.k} className="bg-bark px-4 py-5">
                 <p className="display text-[1.05rem] leading-tight text-bone sm:text-[1.25rem]">{f.k}</p>
-                <p className="label-mono mt-2 text-[0.6875rem] text-bone/50">{f.v}</p>
+                <p className="label-mono mt-2 text-[0.6875rem] text-bone/60">{f.v}</p>
               </li>
             ))}
           </ul>

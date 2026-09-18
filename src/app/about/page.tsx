@@ -99,7 +99,7 @@ export default function AboutPage() {
             <Reveal key={n.step} as="li" delay={i * 100} className="bg-bark p-7 md:p-8">
               <div className="flex items-baseline justify-between gap-4">
                 <span className="display text-[2.5rem] leading-none text-lantern">{String(i + 1).padStart(2, "0")}</span>
-                <span className="label-mono text-bone/45">{n.time}</span>
+                <span className="label-mono text-bone/60">{n.time}</span>
               </div>
               <h3 className="display mt-6 text-display-sm text-bone">{n.step}</h3>
               <p className="mt-4 text-bone/80">{n.body}</p>

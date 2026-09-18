@@ -106,7 +106,7 @@ export function CastGrid() {
               </button>
             </div>
             <DossierBody c={current} index={idx} total={cast.length} />
-            <p className="label-mono mt-8 text-[0.6875rem] text-bone/40">
+            <p className="label-mono mt-8 text-[0.6875rem] text-bone/55">
               Share this one:{" "}
               <Link href={`${basePath}${current.slug}/`} className="text-bone/70 underline decoration-fog underline-offset-4 hover:text-lantern">
                 hopkinshauntedattraction.com{basePath}

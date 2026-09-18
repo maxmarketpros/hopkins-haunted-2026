@@ -50,12 +50,12 @@ export function PassStub({ pass, compact, index }: { pass: Pass; compact?: boole
       <div aria-hidden className="perforated-y w-[2px] shrink-0 self-stretch bg-bone/15" />
 
       <div className="flex w-24 shrink-0 flex-col items-center justify-between bg-soot/60 py-5 sm:w-28">
-        <span className="label-mono [writing-mode:vertical-rl] rotate-180 text-[0.625rem] text-bone/35">{serial}</span>
+        <span className="label-mono [writing-mode:vertical-rl] rotate-180 text-[0.625rem] text-bone/55">{serial}</span>
         <p className="display text-[2rem] leading-none text-lantern sm:text-[2.5rem]">
           <span className="text-[0.55em] align-top">$</span>
           {pass.price}
         </p>
-        <span className="label-mono [writing-mode:vertical-rl] rotate-180 text-[0.625rem] text-bone/35">Admit one</span>
+        <span className="label-mono [writing-mode:vertical-rl] rotate-180 text-[0.625rem] text-bone/55">Admit one</span>
       </div>
     </article>
   );

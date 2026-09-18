@@ -29,13 +29,13 @@ export function CallSheet() {
     <article className="surface overflow-hidden rounded-[2px]">
       <header className="flex flex-wrap items-center justify-between gap-3 border-b border-bone/10 bg-soot/60 px-6 py-4">
         <p className="label-mono text-lantern">Call sheet</p>
-        <p className="label-mono text-bone/45">Actor recruitment & tryouts</p>
+        <p className="label-mono text-bone/60">Actor recruitment & tryouts</p>
       </header>
       <div className="grid gap-8 p-6 md:grid-cols-12 md:p-8">
         <div className="md:col-span-7">
           <h3 className="display text-display-sm text-bone">{t.heading}</h3>
           <p className="mt-4 text-bone/85">{t.body}</p>
-          <p className="label-mono mt-6 text-bone/45">What to expect</p>
+          <p className="label-mono mt-6 text-bone/60">What to expect</p>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
             {t.expect.map((e) => (
               <li key={e} className="flex items-start gap-3 text-bone/85">
@@ -48,7 +48,7 @@ export function CallSheet() {
         <dl className="divide-y divide-bone/10 border-y border-bone/10 md:col-span-5 md:border-y-0 md:border-l md:pl-8">
           {rows.map((r) => (
             <div key={r.k} className="grid grid-cols-[7rem_1fr] gap-3 py-3 text-[0.9375rem]">
-              <dt className="label-mono pt-0.5 text-bone/45">{r.k}</dt>
+              <dt className="label-mono pt-0.5 text-bone/60">{r.k}</dt>
               <dd className="text-bone/90">{r.v}</dd>
             </div>
           ))}

@@ -34,3 +34,11 @@ ff(["-i", src, "-c", "copy", "-movflags", "+faststart", path.join(out, "trailer.
 ff(["-ss", "2", "-i", src, "-frames:v", "1", "-q:v", "3", path.join(out, "trailer-poster.jpg")]);
 
 console.log("done");
+
+// WebP copies of the posters (smaller; used by the pages)
+{
+  const sharp = (await import("sharp")).default;
+  await sharp(path.join(out, "hero-poster.jpg")).webp({ quality: 78 }).toFile(path.join(out, "hero-poster.webp"));
+  await sharp(path.join(out, "trailer-poster.jpg")).webp({ quality: 78 }).toFile(path.join(out, "trailer-poster.webp"));
+  console.log("posters → webp");
+}

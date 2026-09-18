@@ -107,14 +107,14 @@ export function Nav() {
                 style={{ transitionDelay: `${i * 30}ms` }}
               >
                 {item.label}
-                <span aria-hidden className="label-mono text-bone/30">→</span>
+                <span aria-hidden className="label-mono text-bone/50">→</span>
               </Link>
             </li>
           ))}
           <li className="border-b border-bone/10">
             <Link href="/contact" className="display flex items-center justify-between py-5 text-[1.75rem] text-bone/90 hover:text-bone">
               Contact
-              <span aria-hidden className="label-mono text-bone/30">→</span>
+              <span aria-hidden className="label-mono text-bone/50">→</span>
             </Link>
           </li>
           <li className="pt-8">

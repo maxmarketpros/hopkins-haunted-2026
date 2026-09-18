@@ -46,17 +46,17 @@ export default function TicketsPage() {
         </Reveal>
         <Reveal delay={100} className="mt-8 grid gap-6 border-t border-bone/10 pt-8 md:grid-cols-3">
           <div>
-            <p className="label-mono text-bone/45">Hours</p>
+            <p className="label-mono text-bone/60">Hours</p>
             <p className="display mt-2 text-display-sm text-lantern">{season.hoursShort}</p>
             <p className="mt-1 text-bone/60">each night the trail runs</p>
           </div>
           <div>
-            <p className="label-mono text-bone/45">Status</p>
+            <p className="label-mono text-bone/60">Status</p>
             <Countdown className="mt-2 text-lede font-bold text-bone" />
             <p className="mt-1 text-bone/60">Times are Eastern.</p>
           </div>
           <div>
-            <p className="label-mono text-bone/45">Where</p>
+            <p className="label-mono text-bone/60">Where</p>
             <p className="mt-2 text-lede font-bold text-bone">
               {contact.address.street}
               <br />

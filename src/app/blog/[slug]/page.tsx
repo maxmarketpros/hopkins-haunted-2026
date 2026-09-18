@@ -64,7 +64,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
           <div className="container-prose">
             <Blaze label="Blog" className="mb-6" />
             <h1 className="display text-display-lg text-bone">{post.title}</h1>
-            <p className="label-mono mt-6 flex flex-wrap gap-x-3 gap-y-1 text-bone/50">
+            <p className="label-mono mt-6 flex flex-wrap gap-x-3 gap-y-1 text-bone/60">
               <span>By {post.author}</span>
               <span aria-hidden>·</span>
               <time dateTime={post.date}>{formatPostDate(post.date)}</time>
@@ -111,13 +111,13 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
           <nav aria-label="More posts" className="mt-10 grid gap-3 sm:grid-cols-2">
             {older && (
               <Link href={`/blog/${older.slug}/`} className="group rounded-[2px] border border-bone/10 p-5 hover:border-lantern/40">
-                <span className="label-mono text-bone/45">Older</span>
+                <span className="label-mono text-bone/60">Older</span>
                 <span className="mt-2 block font-bold text-bone group-hover:text-lantern">{older.title}</span>
               </Link>
             )}
             {newer && (
               <Link href={`/blog/${newer.slug}/`} className="group rounded-[2px] border border-bone/10 p-5 hover:border-lantern/40 sm:text-right">
-                <span className="label-mono text-bone/45">Newer</span>
+                <span className="label-mono text-bone/60">Newer</span>
                 <span className="mt-2 block font-bold text-bone group-hover:text-lantern">{newer.title}</span>
               </Link>
             )}

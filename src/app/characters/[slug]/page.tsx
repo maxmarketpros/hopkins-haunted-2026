@@ -49,11 +49,11 @@ export default async function CharacterPage({ params }: PageProps<"/characters/[
           <DossierBody c={c} index={idx} total={cast.length} headingTag="h1" />
           <nav aria-label="Other characters" className="mt-14 grid gap-3 border-t border-bone/10 pt-8 sm:grid-cols-2">
             <Link href={`/characters/${prev.slug}/`} className="group surface flex items-center justify-between rounded-[2px] px-5 py-4 hover:border-lantern/40">
-              <span className="label-mono text-bone/45">Previous</span>
+              <span className="label-mono text-bone/60">Previous</span>
               <span className="display text-[1.25rem] text-bone group-hover:text-lantern">← {prev.name}</span>
             </Link>
             <Link href={`/characters/${next.slug}/`} className="group surface flex items-center justify-between rounded-[2px] px-5 py-4 hover:border-lantern/40">
-              <span className="label-mono text-bone/45">Next</span>
+              <span className="label-mono text-bone/60">Next</span>
               <span className="display text-[1.25rem] text-bone group-hover:text-lantern">{next.name} →</span>
             </Link>
           </nav>

@@ -43,7 +43,7 @@ export default function ContactPage() {
           <Reveal className="lg:col-span-5" delay={100}>
             <dl className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
               <div>
-                <dt className="label-mono text-bone/45">Address</dt>
+                <dt className="label-mono text-bone/60">Address</dt>
                 <dd className="mt-1.5 text-lede text-bone">
                   <a href={links.directions} target="_blank" rel="noopener" className="hover:text-lantern">
                     {contact.address.street}
@@ -53,7 +53,7 @@ export default function ContactPage() {
                 </dd>
               </div>
               <div>
-                <dt className="label-mono text-bone/45">Season hours</dt>
+                <dt className="label-mono text-bone/60">Season hours</dt>
                 <dd className="mt-1.5 text-bone">
                   {season.hoursLine}
                   <br />
@@ -61,7 +61,7 @@ export default function ContactPage() {
                 </dd>
               </div>
               <div>
-                <dt className="label-mono text-bone/45">Phone</dt>
+                <dt className="label-mono text-bone/60">Phone</dt>
                 <dd className="mt-1.5">
                   <a href={contact.phoneHref} className="text-lede text-bone hover:text-lantern">
                     {contact.phoneDisplay}
@@ -69,7 +69,7 @@ export default function ContactPage() {
                 </dd>
               </div>
               <div>
-                <dt className="label-mono text-bone/45">Email</dt>
+                <dt className="label-mono text-bone/60">Email</dt>
                 <dd className="mt-1.5">
                   <a href={`mailto:${contact.email}`} className="[overflow-wrap:anywhere] text-bone hover:text-lantern">
                     {contact.email}
@@ -77,13 +77,13 @@ export default function ContactPage() {
                 </dd>
               </div>
               <div>
-                <dt className="label-mono text-bone/45">Parking</dt>
+                <dt className="label-mono text-bone/60">Parking</dt>
                 <dd className="mt-1.5 text-bone/85">
                   General parking is free. VIP parking ($10 per car, bought with your tickets) is closer to the entrance. Handicap parking is available.
                 </dd>
               </div>
               <div>
-                <dt className="label-mono text-bone/45">Follow</dt>
+                <dt className="label-mono text-bone/60">Follow</dt>
                 <dd className="mt-3 flex gap-3">
                   <Social />
                 </dd>

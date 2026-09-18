@@ -22,7 +22,7 @@ export function TrailerFrame({ className }: { className?: string }) {
   return (
     <figure className={cn("relative", className)}>
       {/* film leader mark */}
-      <div className="label-mono mb-3 flex items-center justify-between text-[0.6875rem] text-bone/40">
+      <div className="label-mono mb-3 flex items-center justify-between text-[0.6875rem] text-bone/55">
         <span>Official trailer</span>
         <span>Since {site.since}</span>
       </div>
@@ -32,7 +32,7 @@ export function TrailerFrame({ className }: { className?: string }) {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative aspect-[4/3] h-full">
               {playing ? (
-                <video ref={video} controls playsInline preload="auto" poster="/video/trailer-poster.jpg" className="h-full w-full bg-black">
+                <video ref={video} controls playsInline preload="auto" poster="/video/trailer-poster.webp" className="h-full w-full bg-black">
                   <source src="/video/trailer.mp4" type="video/mp4" />
                   Your browser can’t play this video. <a href="/video/trailer.mp4">Download the trailer</a>.
                 </video>
@@ -44,7 +44,7 @@ export function TrailerFrame({ className }: { className?: string }) {
                   aria-label="Play the trailer"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/video/trailer-poster.jpg" alt="" className="h-full w-full object-cover opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
+                  <img src="/video/trailer-poster.webp" alt="" className="h-full w-full object-cover opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
                   <span className="absolute inset-0 flex items-center justify-center">
                     <span className="flex h-20 w-20 items-center justify-center rounded-full border border-bone/40 bg-pine/60 text-bone backdrop-blur-sm transition-[transform,border-color,box-shadow] duration-300 group-hover:scale-105 group-hover:border-lantern group-hover:shadow-[0_0_50px_rgb(201_162_74_/_0.35)]">
                       <svg width="22" height="22" viewBox="0 0 12 12" fill="currentColor" aria-hidden>

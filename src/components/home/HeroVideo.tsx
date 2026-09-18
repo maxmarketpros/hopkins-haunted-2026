@@ -4,51 +4,57 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Muted, looping background video for the home hero.
- * Falls back to the poster when the visitor prefers reduced motion or has Save-Data on.
+ *
+ * - The <video> is emitted as raw HTML so the `muted` attribute is in the markup (React only sets the property,
+ *   and Chrome's autoplay policy needs the attribute).
+ * - Sources are attached only after the page has loaded, so the poster paints first and the 3 MB loop never
+ *   competes with the logo, fonts and JS for bandwidth.
+ * - Visitors with reduced-motion or Save-Data keep the poster.
  */
+const POSTER = "/video/hero-poster.webp";
+const VIDEO_HTML = `<video class="hero-fade h-full w-full object-cover" muted loop playsinline preload="none" poster="${POSTER}"></video>`;
+const SOURCES = `<source src="/video/hero-loop.webm" type="video/webm"><source src="/video/hero-loop.mp4" type="video/mp4">`;
+
 export function HeroVideo() {
-  const ref = useRef<HTMLVideoElement>(null);
-  const [motionOk, setMotionOk] = useState<boolean | null>(null);
+  const wrap = useRef<HTMLDivElement>(null);
+  const [posterOnly, setPosterOnly] = useState(false);
 
   useEffect(() => {
+    const v = wrap.current?.querySelector("video");
+    if (!v) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const nav = navigator as Navigator & { connection?: { saveData?: boolean } };
-    const saveData = Boolean(nav.connection?.saveData);
-    setMotionOk(!reduce && !saveData);
+    if (reduce || Boolean(nav.connection?.saveData)) {
+      setPosterOnly(true);
+      return;
+    }
+    let timer = 0;
+    const start = () => {
+      if (!v.isConnected || v.querySelector("source")) return;
+      v.innerHTML = SOURCES;
+      v.muted = true;
+      v.load();
+      const p = v.play();
+      if (p && typeof p.catch === "function") p.catch(() => {});
+    };
+    const schedule = () => {
+      timer = window.setTimeout(start, 250);
+    };
+    if (document.readyState === "complete") schedule();
+    else window.addEventListener("load", schedule, { once: true });
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("load", schedule);
+    };
   }, []);
-
-  useEffect(() => {
-    const v = ref.current;
-    if (!v || !motionOk) return;
-    const p = v.play();
-    if (p && typeof p.catch === "function") p.catch(() => {});
-  }, [motionOk]);
 
   return (
     <div aria-hidden className="absolute inset-0 -z-10 overflow-hidden bg-soot">
-      {motionOk ? (
-        <video
-          ref={ref}
-          muted
-          loop
-          playsInline
-          autoPlay
-          preload="metadata"
-          poster="/video/hero-poster.jpg"
-          className="h-full w-full object-cover opacity-0 transition-opacity duration-[1400ms] ease-out"
-          onCanPlay={(e) => {
-            e.currentTarget.style.opacity = "1";
-          }}
-          onLoadedData={(e) => {
-            e.currentTarget.style.opacity = "1";
-          }}
-        >
-          <source src="/video/hero-loop.webm" type="video/webm" />
-          <source src="/video/hero-loop.mp4" type="video/mp4" />
-        </video>
-      ) : (
+      {posterOnly ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src="/video/hero-poster.jpg" alt="" className="h-full w-full object-cover" />
+        <img src={POSTER} alt="" className="h-full w-full object-cover" />
+      ) : (
+        <div ref={wrap} className="h-full w-full" dangerouslySetInnerHTML={{ __html: VIDEO_HTML }} />
       )}
       {/* cool fog tint, darken for legibility, fade into the page ground */}
       <div className="absolute inset-0 bg-[radial-gradient(80%_70%_at_50%_20%,rgb(47_111_106_/_0.28),transparent_70%)] mix-blend-screen" />

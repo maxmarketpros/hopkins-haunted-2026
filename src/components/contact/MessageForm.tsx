@@ -4,7 +4,7 @@
  */
 export function MessageForm() {
   const field =
-    "w-full rounded-[2px] border border-bone/15 bg-soot px-4 py-3 text-bone placeholder:text-bone/30 focus:border-lantern/60 focus:outline-none focus:ring-2 focus:ring-lantern/30";
+    "w-full rounded-[2px] border border-bone/15 bg-soot px-4 py-3 text-bone placeholder:text-bone/50 focus:border-lantern/60 focus:outline-none focus:ring-2 focus:ring-lantern/30";
   return (
     <form
       name="contact"
@@ -24,15 +24,15 @@ export function MessageForm() {
       <p className="mt-2 text-bone/70">Group rates, lost and found, press, or anything the FAQ didn’t cover.</p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <label className="block">
-          <span className="label-mono text-bone/50">Name</span>
+          <span className="label-mono text-bone/60">Name</span>
           <input type="text" name="name" required autoComplete="name" className={`mt-2 ${field}`} />
         </label>
         <label className="block">
-          <span className="label-mono text-bone/50">Email</span>
+          <span className="label-mono text-bone/60">Email</span>
           <input type="email" name="email" required autoComplete="email" className={`mt-2 ${field}`} />
         </label>
         <label className="block sm:col-span-2">
-          <span className="label-mono text-bone/50">Message</span>
+          <span className="label-mono text-bone/60">Message</span>
           <textarea name="message" required rows={5} className={`mt-2 ${field}`} />
         </label>
       </div>
@@ -40,7 +40,7 @@ export function MessageForm() {
         <button type="submit" className="label-mono inline-flex rounded-[2px] bg-blaze px-6 py-3.5 text-bone lantern-glow hover:bg-blaze-deep">
           Send message
         </button>
-        <p className="text-[0.875rem] text-bone/50">We reply from the inbox above, usually within a day during the season.</p>
+        <p className="text-[0.875rem] text-bone/60">We reply from the inbox above, usually within a day during the season.</p>
       </div>
     </form>
   );

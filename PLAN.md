@@ -430,3 +430,18 @@ Landmarks, skip link, one `h1` per page, logical headings, lantern focus rings, 
 | Canonical host `www` (matches current indexing)? | Yes; apex redirects to `www`. |
 | Redirect the old `hopkinshauntedhayride.com` here? | Prepared as an optional alias; needs DNS access to that domain. |
 | Should the owner be able to add blog posts without a developer (git-based CMS at `/admin`)? | Not included; MDX in the repo. Can be added later with Decap CMS. |
+
+---
+
+## 9. Build notes (what changed from the plan during the build, 2026-09-18)
+
+- **Display face is Alfa Slab One, not Rye.** Four candidates were rendered side by side on the real page (Rye, Alfa Slab One, Grenze Gotisch, Ultra). Rye read "Wild West saloon", Grenze read "metal band". Alfa Slab One keeps the 1800s handbill weight and stays legible at every size.
+- **Character dossier is a `<dialog>` + History API, not intercepting routes.** Next.js does not support intercepting routes in static export. Opening a card pushes `/characters/<slug>/` onto history, Escape/Back/backdrop click restore `/characters/`, and each slug is also a real prerendered page for direct visits and sharing.
+- **Blog migration reads the rendered article DOM.** Wix's JSON-LD `articleBody` is a flattened copy with no headings or lists, and one post had none at all. `scripts/extract-blog.mjs` converts the `article[data-hook="post"]` markup to Markdown and only falls back to `articleBody` if the DOM yields nothing. One post contained a literal `![…](https://example.com/…)` placeholder the owner had pasted; it is dropped.
+- **The hero-bottom season strip was cut.** It duplicated the utility strip and the at-a-glance bar. The specific date groups now live in the at-a-glance bar next to the countdown.
+- **Hero video overlay lightened** from 55% to 30% so the red-lit footage reads; the teal screen tint stays.
+- **Nine nights group into three runs, not four.** Oct 29–Nov 1 is one consecutive run (Thu–Sun), so the date grid shows it as "Halloween weekend" with four tiles. The old site's "October 29–31 / November 1" wording is kept everywhere the dates are written out.
+- **Post dates** are formatted as calendar dates (UTC) so "2026-04-07" never shows as April 6.
+- **Verified locally:** `next build` exports 29 routes; `netlify serve` confirms all 301 redirects, Image CDN transforms, security headers and the contact form markup. Every external link returns 200. Each page has one `h1` and a unique title.
+- **Hero video autoplay and loading.** React renders `muted` as a property only, so Chrome blocked autoplay on the production build. The `<video>` is now emitted as raw HTML with the `muted` attribute, and its sources are attached after the page `load` event so the poster paints first and the 3 MB loop never competes with the logo, fonts and JS. Posters are WebP.
+- **Contrast.** Lighthouse flagged mono labels at 45–50% bone on pine (≈4:1). Secondary text now sits at 55–60% (≥5.4:1). The "Tonight" marker on the date grid is lantern gold instead of blaze red on dark.

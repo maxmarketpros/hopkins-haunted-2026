@@ -12,7 +12,7 @@ export function FindUs() {
           <h2 className="display text-display-lg text-bone">Fork Shoals Road, after dark</h2>
           <dl className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
             <div>
-              <dt className="label-mono text-bone/45">Address</dt>
+              <dt className="label-mono text-bone/60">Address</dt>
               <dd className="mt-1.5 text-bone">
                 <a href={links.directions} target="_blank" rel="noopener" className="hover:text-lantern">
                   {contact.address.street}
@@ -22,7 +22,7 @@ export function FindUs() {
               </dd>
             </div>
             <div>
-              <dt className="label-mono text-bone/45">Hours</dt>
+              <dt className="label-mono text-bone/60">Hours</dt>
               <dd className="mt-1.5 text-bone">
                 {season.hoursShort}
                 <br />
@@ -30,7 +30,7 @@ export function FindUs() {
               </dd>
             </div>
             <div>
-              <dt className="label-mono text-bone/45">Phone</dt>
+              <dt className="label-mono text-bone/60">Phone</dt>
               <dd className="mt-1.5">
                 <a href={contact.phoneHref} className="text-bone hover:text-lantern">
                   {contact.phoneDisplay}
@@ -38,7 +38,7 @@ export function FindUs() {
               </dd>
             </div>
             <div>
-              <dt className="label-mono text-bone/45">Email</dt>
+              <dt className="label-mono text-bone/60">Email</dt>
               <dd className="mt-1.5">
                 <a href={`mailto:${contact.email}`} className="[overflow-wrap:anywhere] text-bone hover:text-lantern">
                   {contact.email}

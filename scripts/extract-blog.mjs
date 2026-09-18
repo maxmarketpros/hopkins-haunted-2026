@@ -117,6 +117,8 @@ function domToMarkdown(root) {
     }
     const text = decode(inline(el)).trim();
     if (!text) continue;
+    // Wix's own "Updated: <date>" line sits inside the article; the date is already in front matter
+    if (/^Updated:\s/i.test(text)) continue;
     // the owner pasted raw markdown image placeholders pointing at example.com; they never rendered, so drop them
     if (/^!\[[^\]]*\]\(https?:\/\/example\.com[^)]*\)$/.test(text)) continue;
     if (tag === "h2") parts.push(`## ${text}`);

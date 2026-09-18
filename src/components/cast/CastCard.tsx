@@ -66,7 +66,7 @@ export function CastCard({ c, priority, onOpen }: { c: Character; priority?: boo
 
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
         <div>
-          <p className="label-mono text-[0.625rem] text-bone/45">{c.spottedAt}</p>
+          <p className="label-mono text-[0.625rem] text-bone/60">{c.spottedAt}</p>
           <h3 className="display mt-1 text-[1.5rem] leading-none text-bone">{c.name}</h3>
         </div>
       </div>

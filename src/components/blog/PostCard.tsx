@@ -24,14 +24,14 @@ export function PostCard({ post, featured }: { post: PostMeta; featured?: boolea
           />
         </figure>
         <div className="mt-5">
-          <p className="label-mono flex flex-wrap gap-x-3 text-bone/45">
+          <p className="label-mono flex flex-wrap gap-x-3 text-bone/60">
             <time dateTime={post.date}>{formatPostDate(post.date)}</time>
             <span aria-hidden>·</span>
             <span>{post.readTime}</span>
           </p>
           <h2 className={cn("display mt-3 text-bone group-hover:text-lantern", featured ? "text-display-md" : "text-[1.375rem] leading-tight")}>{post.title}</h2>
           <p className="mt-3 max-w-2xl text-bone/70">{post.excerpt}</p>
-          <p className="mt-4 text-[0.875rem] text-bone/50">By {post.author}</p>
+          <p className="mt-4 text-[0.875rem] text-bone/60">By {post.author}</p>
         </div>
       </Link>
     </article>

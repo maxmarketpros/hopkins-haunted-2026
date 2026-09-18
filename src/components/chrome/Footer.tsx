@@ -53,7 +53,7 @@ export function Footer() {
               {contact.email}
             </a>
           </address>
-          <p className="label-mono mt-6 text-bone/50">
+          <p className="label-mono mt-6 text-bone/60">
             {season.rangeShort} · {season.hoursShort}
           </p>
           <a
@@ -68,7 +68,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-bone/10">
-        <div className="container-page flex flex-col gap-3 py-6 text-[0.8125rem] text-bone/45 md:flex-row md:items-center md:justify-between">
+        <div className="container-page flex flex-col gap-3 py-6 text-[0.8125rem] text-bone/60 md:flex-row md:items-center md:justify-between">
           <p>
             © {season.year} {site.name}. {site.footerLine} All rights reserved.
           </p>

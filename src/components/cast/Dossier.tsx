@@ -32,17 +32,17 @@ export function DossierBody({
         />
       </figure>
       <div className="flex flex-col md:col-span-6 lg:col-span-7">
-        <p className="label-mono text-bone/45">
+        <p className="label-mono text-bone/60">
           Cast {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </p>
         <H className="display mt-4 text-display-lg text-bone">{c.name}</H>
         <dl className="mt-6 grid gap-4 border-y border-bone/10 py-5 sm:grid-cols-2">
           <div>
-            <dt className="label-mono text-bone/45">Spotted at</dt>
+            <dt className="label-mono text-bone/60">Spotted at</dt>
             <dd className="mt-1 font-bold text-bone">{c.spottedAt}</dd>
           </div>
           <div>
-            <dt className="label-mono text-bone/45">Threat</dt>
+            <dt className="label-mono text-bone/60">Threat</dt>
             <dd className="mt-1 font-bold text-bone">Real person. Real makeup. Real close.</dd>
           </div>
         </dl>
