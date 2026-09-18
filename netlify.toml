@@ -1,0 +1,83 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# ---------- Canonical host ----------
+[[redirects]]
+  from = "https://hopkinshauntedattraction.com/*"
+  to = "https://www.hopkinshauntedattraction.com/:splat"
+  status = 301
+  force = true
+
+# ---------- Old Wix URLs → new pages ----------
+[[redirects]]
+  from = "/about-hopkins-haunted-attraction"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/hopkins-haunted-attraction-trailer"
+  to = "/about/#trailer"
+  status = 301
+
+[[redirects]]
+  from = "/frequently-asked-questions"
+  to = "/faq/"
+  status = 301
+
+[[redirects]]
+  from = "/entertainment-jobs-in-greenville-county"
+  to = "/join-the-crew/"
+  status = 301
+
+[[redirects]]
+  from = "/hopkins-haunted-attraction-characters"
+  to = "/characters/"
+  status = 301
+
+[[redirects]]
+  from = "/post/:slug"
+  to = "/blog/:slug/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/categories/*"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/tags/*"
+  to = "/blog/"
+  status = 301
+
+# ---------- Headers ----------
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/brand/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
