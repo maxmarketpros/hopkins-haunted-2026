@@ -18,23 +18,22 @@ export default function CharactersPage() {
   return (
     <>
       <PageHero
-        blaze={`Cast · ${cast.length} of them`}
-        title="Who’s waiting in the woods"
-        lede="Get to know the main characters. Every one of them is a real person in real makeup, and every one of them has been out there longer than you have. Run a light over them, then open one."
-        image="/images/generated/treeline-silhouette.webp"
-        imageAlt="A dark tree line across a foggy field under a clouded moon"
-        imagePosition="center 55%"
+        blaze={`${cast.length} characters`}
+        title="The cast"
+        lede="Real people, real makeup, and every one of them has been out there longer than you have."
+        image="/images/site/cast-poster.webp"
+        imageAlt="Five Hopkins Haunted Attraction characters posed at a fence under a full moon"
+        imagePosition="center 20%"
+        size="lg"
       />
 
-      <Section blaze="Main characters" seam className="pt-14 md:pt-20">
+      <Section className="pt-16 md:pt-24">
         <CastGrid />
-        <div className="mt-12 flex flex-wrap items-center gap-4 border-t border-bone/10 pt-8">
+        <div className="mt-20 flex flex-wrap items-center gap-8">
           <Button href={links.tickets} size="lg">
             Meet them in person
           </Button>
-          <p className="max-w-md text-[0.9375rem] text-bone/60">
-            Actors will only touch you if you purchase the Touch Pass. Otherwise, look all you like.
-          </p>
+          <p className="max-w-sm text-bone/60">They only touch you with a Touch Pass.</p>
         </div>
       </Section>
 

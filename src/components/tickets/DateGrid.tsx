@@ -25,13 +25,13 @@ export function DateGrid() {
                 <li
                   key={iso}
                   className={cn(
-                    "flex w-[4.25rem] flex-col items-center rounded-[2px] border px-2 py-3 text-center transition-colors sm:w-[4.75rem]",
+                    "flex w-[4.5rem] flex-col items-center rounded-[2px] border px-2 py-4 text-center transition-colors sm:w-[5.25rem]",
                     isTonight ? "border-blaze bg-blaze/15 lantern-glow" : "border-bone/10 bg-soot/60",
                     isPast && "opacity-40",
                   )}
                 >
                   <span className="label-mono text-[0.625rem] text-bone/60">{p.dow}</span>
-                  <span className={cn("display mt-1 text-[2rem] leading-none", isTonight ? "text-bone" : "text-lantern")}>{p.day}</span>
+                  <span className={cn("display mt-1 text-[2.5rem] leading-none", "text-bone")}>{p.day}</span>
                   <span className="label-mono mt-1 text-[0.625rem] text-bone/60">{p.month}</span>
                   {isTonight && <span className="label-mono mt-2 text-[0.5625rem] text-lantern">Tonight</span>}
                   <span className="sr-only">{p.long}</span>

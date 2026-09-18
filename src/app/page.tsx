@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import { CastTeaser } from "@/components/home/CastTeaser";
 import { CrewTeaser } from "@/components/home/CrewTeaser";
-import { FaqTeaser } from "@/components/home/FaqTeaser";
 import { FinalCta } from "@/components/home/FinalCta";
 import { FindUs } from "@/components/home/FindUs";
+import { Glance } from "@/components/home/Glance";
 import { Hero } from "@/components/home/Hero";
 import { PassesPreview } from "@/components/home/PassesPreview";
-import { Tonight } from "@/components/home/Tonight";
 import { TrailIntro } from "@/components/home/TrailIntro";
-import { TrailSpine } from "@/components/home/TrailSpine";
 import { TrailerSection } from "@/components/home/TrailerSection";
 import { site } from "@/content/site";
 import { eventsJsonLd, JsonLd } from "@/lib/jsonld";
@@ -26,17 +24,13 @@ export default function Home() {
     <>
       <h1 className="sr-only">Hopkins Haunted Attraction: the most terrifying haunted attraction in Greenville County, SC</h1>
       <Hero />
-      <Tonight />
-      <div className="relative">
-        <TrailSpine />
-        <TrailIntro />
-        <PassesPreview />
-        <CastTeaser />
-        <TrailerSection />
-        <FaqTeaser />
-        <CrewTeaser />
-        <FindUs />
-      </div>
+      <Glance />
+      <TrailIntro />
+      <PassesPreview />
+      <CastTeaser />
+      <TrailerSection />
+      <CrewTeaser />
+      <FindUs />
       <FinalCta />
       <JsonLd data={eventsJsonLd()} />
     </>

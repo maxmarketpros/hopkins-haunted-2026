@@ -1,25 +1,25 @@
 import { Button } from "@/components/system/Button";
 import { Reveal } from "@/components/system/Reveal";
 import { Section } from "@/components/system/Section";
-import { PassStub } from "@/components/tickets/PassStub";
+import { PassTile } from "@/components/tickets/PassTile";
 import { links, passes } from "@/content/site";
 
 export function PassesPreview() {
   return (
-    <Section id="passes" blaze="Passes · 4 options" title="Pick your pass" lede="Every pass is one night on the trail. Buy online to skip the ticket line; the booth on site sells them too.">
-      <div className="grid gap-4 md:grid-cols-2">
+    <Section id="passes" title="Passes" lede="One night on the trail. Buy online and skip the line at the gate." className="bg-soot">
+      <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
         {passes.map((p, i) => (
-          <Reveal key={p.slug} delay={i * 70}>
-            <PassStub pass={p} index={i} compact />
+          <Reveal key={p.slug} delay={i * 80}>
+            <PassTile pass={p} />
           </Reveal>
         ))}
       </div>
-      <div className="mt-10 flex flex-wrap items-center gap-3">
+      <div className="mt-20 flex flex-wrap items-center gap-8">
         <Button href={links.tickets} size="lg">
-          Purchase tickets
+          Buy tickets
         </Button>
         <Button href="/tickets" variant="ghost">
-          Dates, hours and the fine print
+          All dates and details
         </Button>
       </div>
     </Section>

@@ -23,7 +23,7 @@ export default function ContactPage() {
       <PageHero
         blaze="Contact & directions"
         title="Fork Shoals Road, after dark"
-        lede={`${contact.address.full}. Look for the cars and the fog; you can’t miss the turn.`}
+        lede={contact.address.full}
         image="/images/generated/farm-lane-headlights.webp"
         imageAlt="Headlights glowing through fog on a gravel farm lane lined with pines, a wooden arrow sign at the turn"
         imagePosition="center 60%"
@@ -35,7 +35,7 @@ export default function ContactPage() {
         }
       />
 
-      <Section blaze="Find us" seam className="pt-14 md:pt-20">
+      <Section className="pt-16 md:pt-24">
         <div className="grid gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
             <DarkMap height="h-[380px] md:h-[520px]" />
@@ -93,19 +93,17 @@ export default function ContactPage() {
         </div>
       </Section>
 
-      <Section blaze="Message" className="pt-0 md:pt-0">
+      <Section title="Send a message" className="bg-soot">
         <div className="grid gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
             <MessageForm />
           </Reveal>
           <Reveal className="lg:col-span-5" delay={100}>
             <p className="display text-display-sm text-bone">Or just come out</p>
-            <p className="mt-4 text-bone/75">
-              The fastest way to get an answer during the season is at the ticket booth. The second fastest is the phone.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button href={links.tickets}>Purchase tickets</Button>
-              <Button href="/faq" variant="secondary">
+            <p className="mt-4 text-bone/70">During the season the fastest answer is at the ticket booth. The second fastest is the phone.</p>
+            <div className="mt-8 flex flex-wrap items-center gap-6">
+              <Button href={links.tickets}>Get tickets</Button>
+              <Button href="/faq" variant="ghost">
                 Read the FAQ
               </Button>
             </div>

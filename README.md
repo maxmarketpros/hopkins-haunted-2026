@@ -1,6 +1,6 @@
 # Hopkins Haunted Attraction — website
 
-The 2026 site for [hopkinshauntedattraction.com](https://www.hopkinshauntedattraction.com): a static Next.js 16 + Tailwind v4 build deployed on Netlify. It replaces the Wix site. `PLAN.md` holds the content inventory and design system.
+The 2026 site for [hopkinshauntedattraction.com](https://www.hopkinshauntedattraction.com): a static Next.js 16 + Tailwind v4 build deployed on Netlify. It replaces the Wix site. `PLAN.md` holds the content inventory; `REDESIGN.md` describes the current visual direction (v2, "The Poster").
 
 ## Run it
 

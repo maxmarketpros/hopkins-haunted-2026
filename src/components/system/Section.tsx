@@ -3,8 +3,8 @@ import { cn } from "@/lib/cn";
 import { Blaze } from "./Blaze";
 
 /**
- * Standard page section: blaze eyebrow, optional headline, container.
- * `seam` adds the cool fog light at the top edge.
+ * Page section: generous vertical room, optional eyebrow + short headline.
+ * `align="center"` centers the header (used for the roomy one-idea sections).
  */
 export function Section({
   id,
@@ -17,6 +17,7 @@ export function Section({
   narrow,
   headerClassName,
   titleSize = "lg",
+  align = "left",
 }: {
   id?: string;
   blaze?: string;
@@ -28,16 +29,17 @@ export function Section({
   narrow?: boolean;
   headerClassName?: string;
   titleSize?: "lg" | "md" | "xl";
+  align?: "left" | "center";
 }) {
   const sizeCls = { xl: "text-display-xl", lg: "text-display-lg", md: "text-display-md" }[titleSize];
   return (
-    <section id={id} className={cn("py-20 md:py-28", seam && "fog-seam", className)}>
+    <section id={id} className={cn("py-24 md:py-36", seam && "fog-seam", className)}>
       <div className={narrow ? "container-prose" : "container-page"}>
         {(blaze || title) && (
-          <header className={cn("mb-10 md:mb-14 max-w-3xl", headerClassName)}>
-            {blaze && <Blaze label={blaze} className="mb-5" />}
+          <header className={cn("mb-14 md:mb-20", align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-4xl", headerClassName)}>
+            {blaze && <Blaze label={blaze} className={cn("mb-5", align === "center" && "justify-center")} />}
             {title && <h2 className={cn("display text-bone", sizeCls)}>{title}</h2>}
-            {lede && <p className="mt-5 text-lede text-bone/75 max-w-2xl">{lede}</p>}
+            {lede && <p className={cn("mt-6 text-lede text-bone/70 max-w-2xl", align === "center" && "mx-auto")}>{lede}</p>}
           </header>
         )}
         {children}

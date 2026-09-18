@@ -17,13 +17,11 @@ export default function BlogIndex() {
   const [first, ...rest] = posts;
   return (
     <>
-      <section className="fog-seam pb-12 pt-28 md:pb-16 md:pt-36">
+      <section className="pb-14 pt-40 md:pb-20 md:pt-56">
         <div className="container-page">
-          <Blaze label={`Blog · ${posts.length} posts`} className="mb-6" />
+          <Blaze label="Blog" className="mb-6" />
           <h1 className="display text-display-xl text-bone">Stories from the woods</h1>
-          <p className="mt-6 max-w-2xl text-lede text-bone/75">
-            Local haunted history, what to expect on the trail, and how to join the crew. New posts land before the season.
-          </p>
+          <p className="mt-7 max-w-2xl text-lede text-bone/75">Haunted history, what to expect on the trail, and how to join the crew.</p>
         </div>
       </section>
       <section className="pb-20 md:pb-28">

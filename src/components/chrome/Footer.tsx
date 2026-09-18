@@ -5,21 +5,18 @@ import { Social } from "./Social";
 
 export function Footer() {
   return (
-    <footer className="relative mt-20 border-t border-bone/10 bg-soot">
+    <footer className="relative border-t border-bone/10 bg-soot">
       <div className="container-page grid gap-12 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
-          <Image src="/brand/logo.png" alt={site.name} width={1600} height={600} className="h-auto w-64" />
-          <p className="mt-6 max-w-sm text-bone/70">
-            A 30-minute walk-through haunted trail on a historic farm in Simpsonville, South Carolina. Live actors, cinematic
-            sets, and the sinister woods of the 1800s. Every October since {site.since}.
-          </p>
+          <Image src="/brand/logo.png" alt={site.name} width={1600} height={600} className="h-auto w-72" />
+          <p className="mt-6 max-w-sm text-bone/70">A 30-minute haunted trail on a historic farm in Simpsonville, South Carolina. Every October since {site.since}.</p>
           <div className="mt-6 flex gap-3">
             <Social />
           </div>
         </div>
 
         <nav aria-label="Footer" className="md:col-span-3">
-          <p className="label-mono text-lantern">Pages</p>
+          <p className="label-mono text-blaze">Pages</p>
           <ul className="mt-4 space-y-2.5">
             {nav.map((n) => (
               <li key={n.href}>
@@ -37,7 +34,7 @@ export function Footer() {
         </nav>
 
         <div className="md:col-span-4">
-          <p className="label-mono text-lantern">Find us</p>
+          <p className="label-mono text-blaze">Find us</p>
           <address className="mt-4 not-italic text-bone/80">
             <a href={links.directions} target="_blank" rel="noopener" className="hover:text-bone hover:underline decoration-fog underline-offset-4">
               {contact.address.street}

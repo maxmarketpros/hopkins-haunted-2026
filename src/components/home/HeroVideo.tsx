@@ -55,10 +55,10 @@ export function HeroVideo() {
       <img src={POSTER} alt="" width={1280} height={720} fetchPriority="high" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
       <div ref={wrap} className="absolute inset-0" dangerouslySetInnerHTML={{ __html: VIDEO_HTML }} />
       {/* cool fog tint, darken for legibility, fade into the page ground */}
-      <div className="absolute inset-0 bg-[radial-gradient(80%_70%_at_50%_20%,rgb(47_111_106_/_0.28),transparent_70%)] mix-blend-screen" />
-      <div className="absolute inset-0 bg-pine/30" />
+      <div className="absolute inset-0 bg-soot/55" />
+      <div className="absolute inset-0 bg-[radial-gradient(60%_55%_at_50%_45%,transparent_0%,rgb(7_9_8_/_0.75)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-pine via-pine/60 to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-pine/80 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-soot/80 to-transparent" />
     </div>
   );
 }
