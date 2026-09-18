@@ -28,7 +28,7 @@ export function CallSheet() {
   return (
     <article className="surface overflow-hidden rounded-[2px]">
       <header className="flex flex-wrap items-center justify-between gap-3 border-b border-bone/10 bg-soot/60 px-6 py-4">
-        <p className="label-mono text-lantern">Call sheet</p>
+        <p className="label-mono text-blaze">Call sheet</p>
         <p className="label-mono text-bone/60">Actor recruitment & tryouts</p>
       </header>
       <div className="grid gap-8 p-6 md:grid-cols-12 md:p-8">
@@ -56,7 +56,7 @@ export function CallSheet() {
       </div>
       <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-bone/10 px-6 py-5 md:px-8">
         <p className="text-bone/70">Applications are open year-round.</p>
-        <a href={links.apply} target="_blank" rel="noopener" className="label-mono inline-flex rounded-[2px] bg-blaze px-5 py-3 text-bone lantern-glow hover:bg-blaze-deep">
+        <a href={links.apply} target="_blank" rel="noopener" className="label-mono inline-flex rounded-[2px] bg-blaze px-5 py-3 text-bone lantern-glow hover:bg-[#d92c22]">
           Apply now
         </a>
       </footer>

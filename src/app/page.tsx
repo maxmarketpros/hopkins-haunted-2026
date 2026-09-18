@@ -1,44 +1,41 @@
 import type { Metadata } from "next";
+import { AboutBlock } from "@/components/home/AboutBlock";
 import { CastTeaser } from "@/components/home/CastTeaser";
 import { CrewTeaser } from "@/components/home/CrewTeaser";
-import { FaqTeaser } from "@/components/home/FaqTeaser";
 import { FinalCta } from "@/components/home/FinalCta";
-import { FindUs } from "@/components/home/FindUs";
 import { Hero } from "@/components/home/Hero";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { PassesPreview } from "@/components/home/PassesPreview";
-import { Tonight } from "@/components/home/Tonight";
+import { PlanYourNight } from "@/components/home/PlanYourNight";
 import { TrailIntro } from "@/components/home/TrailIntro";
-import { TrailSpine } from "@/components/home/TrailSpine";
 import { TrailerSection } from "@/components/home/TrailerSection";
 import { site } from "@/content/site";
-import { eventsJsonLd, JsonLd } from "@/lib/jsonld";
+import { eventsJsonLd, JsonLd, videoJsonLd } from "@/lib/jsonld";
+
+const title = `Haunted Trail Near Greenville, SC | ${site.name}`;
 
 export const metadata: Metadata = {
-  title: `${site.name} | Haunted Trail in Simpsonville, SC`,
+  title: { absolute: title },
   description:
-    "The most terrifying haunted attraction in Greenville County, SC. A 30-minute walk-through haunted trail on a historic farm in Simpsonville with live actors and cinematic scares. Open October 16 – November 1, 2026, 7:30 PM to midnight.",
+    "A 30-minute haunted trail on an 1800s farm in Simpsonville, SC, about 30 minutes from Greenville. Live actors, nine nights, Oct 16 – Nov 1, 2026. From $15.",
   alternates: { canonical: "/" },
-  openGraph: { title: `${site.name} | Haunted Trail in Simpsonville, SC`, url: "/" },
+  openGraph: { title, url: "/" },
 };
 
 export default function Home() {
   return (
     <>
-      <h1 className="sr-only">Hopkins Haunted Attraction: the most terrifying haunted attraction in Greenville County, SC</h1>
       <Hero />
-      <Tonight />
-      <div className="relative">
-        <TrailSpine />
-        <TrailIntro />
-        <PassesPreview />
-        <CastTeaser />
-        <TrailerSection />
-        <FaqTeaser />
-        <CrewTeaser />
-        <FindUs />
-      </div>
+      <TrailIntro />
+      <PassesPreview />
+      <CastTeaser />
+      <TrailerSection />
+      <CrewTeaser />
+      <PlanYourNight />
+      <HomeFaq />
+      <AboutBlock />
       <FinalCta />
-      <JsonLd data={eventsJsonLd()} />
+      <JsonLd data={[...eventsJsonLd(), videoJsonLd()]} />
     </>
   );
 }

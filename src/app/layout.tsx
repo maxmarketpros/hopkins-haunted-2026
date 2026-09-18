@@ -1,15 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Alfa_Slab_One, IBM_Plex_Mono, Libre_Caslon_Text } from "next/font/google";
+import { Anton, IBM_Plex_Mono, Libre_Caslon_Text } from "next/font/google";
 import { Footer } from "@/components/chrome/Footer";
 import { Grain } from "@/components/chrome/Grain";
 import { MobileCtaBar } from "@/components/chrome/MobileCtaBar";
 import { Nav } from "@/components/chrome/Nav";
-import { SeasonStrip } from "@/components/chrome/SeasonStrip";
 import { site } from "@/content/site";
-import { organizationJsonLd, JsonLd } from "@/lib/jsonld";
+import { organizationJsonLd, JsonLd, websiteJsonLd } from "@/lib/jsonld";
 import "./globals.css";
 
-const alfa = Alfa_Slab_One({ weight: "400", subsets: ["latin"], variable: "--font-alfa", display: "swap" });
+const anton = Anton({ weight: "400", subsets: ["latin"], variable: "--font-anton", display: "swap" });
 const caslon = Libre_Caslon_Text({
   weight: ["400", "700"],
   style: ["normal", "italic"],
@@ -35,6 +34,11 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
   alternates: { types: { "application/rss+xml": `${site.url}/blog/feed.xml` } },
+  // Paste the tokens from Search Console / Bing Webmaster into Netlify env vars; no code change needed.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } : undefined,
+  },
 };
 
 export const viewport: Viewport = {
@@ -44,7 +48,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${alfa.variable} ${caslon.variable} ${plex.variable} h-full`}>
+    <html lang="en" className={`${anton.variable} ${caslon.variable} ${plex.variable} h-full`}>
       <body className="flex min-h-full flex-col">
         <a
           href="#main"
@@ -52,7 +56,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <SeasonStrip />
         <Nav />
         <main id="main" className="flex-1">
           {children}
@@ -60,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Footer />
         <MobileCtaBar />
         <Grain />
-        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
       </body>
     </html>
   );

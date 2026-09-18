@@ -6,19 +6,19 @@ type Variant = "primary" | "secondary" | "ghost";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-mono uppercase tracking-[0.14em] whitespace-nowrap rounded-[2px] transition-[background-color,color,box-shadow,transform] duration-300 ease-out select-none";
+  "inline-flex items-center justify-center gap-2 font-mono uppercase tracking-[0.16em] whitespace-nowrap rounded-[2px] transition-[background-color,color,box-shadow,transform,border-color] duration-300 ease-out select-none";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-blaze text-bone lantern-glow hover:bg-blaze-deep hover:shadow-[0_0_0_1px_rgb(201_162_74_/_0.4),0_0_60px_rgb(201_162_74_/_0.28)] active:translate-y-px",
+    "bg-blaze text-bone lantern-glow hover:bg-[#d92c22] hover:shadow-[0_0_0_1px_rgb(196_38_29_/_0.6),0_16px_60px_-10px_rgb(196_38_29_/_0.8)] active:translate-y-px",
   secondary:
-    "border border-bone/25 text-bone hover:border-bone/50 hover:bg-fog-deep/40 active:translate-y-px",
-  ghost: "text-bone/80 hover:text-bone underline decoration-fog underline-offset-[0.35em] hover:decoration-lantern",
+    "border border-bone/30 text-bone hover:border-bone hover:bg-bone/5 active:translate-y-px",
+  ghost: "text-bone/85 hover:text-bone underline decoration-blaze underline-offset-[0.4em] decoration-2 hover:decoration-bone",
 };
 
 const sizes: Record<Size, string> = {
-  md: "text-[0.8125rem] px-5 py-3",
-  lg: "text-[0.875rem] px-7 py-4",
+  md: "text-[0.8125rem] px-6 py-3.5",
+  lg: "text-[0.9375rem] px-9 py-5",
 };
 
 type Props = {
@@ -31,7 +31,8 @@ type Props = {
 } & Omit<ComponentProps<"a">, "href" | "className" | "children">;
 
 export function Button({ href, variant = "primary", size = "md", className, children, external, ...rest }: Props) {
-  const cls = cn(base, variants[variant], sizes[size], className);
+  const ghost = variant === "ghost";
+  const cls = cn(base, variants[variant], ghost ? "px-0 py-2 text-[0.8125rem]" : sizes[size], className);
   if (!href) {
     return (
       <button type="button" className={cls} {...(rest as ComponentProps<"button">)}>

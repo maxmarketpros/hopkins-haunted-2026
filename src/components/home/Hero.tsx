@@ -1,42 +1,57 @@
-import Image from "next/image";
 import { Button } from "@/components/system/Button";
-import { contact, links, site } from "@/content/site";
+import { hero, links } from "@/content/site";
+import { BillingBlock } from "./BillingBlock";
 import { HeroVideo } from "./HeroVideo";
 
+/**
+ * The one-sheet: full-viewport video, bottom-left billing.
+ * The H1 is the site's ranking line and the biggest type on the site. No logo; the nav carries it.
+ */
 export function Hero() {
+  const lines = hero.h1;
   return (
-    <section className="relative isolate flex min-h-[min(92svh,900px)] flex-col justify-end overflow-hidden bg-soot">
+    <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-soot">
       <HeroVideo />
 
-      <div className="container-page relative flex flex-1 flex-col justify-center pb-28 pt-24 md:pb-36 md:pt-28">
-        <div className="hero-enter max-w-3xl">
-          <Image
-            src="/brand/logo.png"
-            alt={site.name}
-            width={1600}
-            height={600}
-            priority
-            sizes="(min-width: 768px) 640px, 88vw"
-            className="h-auto w-[min(100%,640px)] drop-shadow-[0_10px_40px_rgb(0_0_0_/_0.6)]"
-          />
-          <p className="mt-7 max-w-xl text-lede italic text-bone/85">
-            {site.tagline}. A 30-minute haunted trail through a historic farm in {contact.address.city}, South Carolina.
-            Live actors. No hayride. No way around it.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Button href={links.tickets} size="lg">
-              Purchase tickets
-            </Button>
-            <Button href="#trailer" variant="secondary" size="lg">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden>
-                <path d="M2 1.5v9l8-4.5-8-4.5Z" />
-              </svg>
-              See the trailer
-            </Button>
-          </div>
+      <div className="container-page relative flex flex-1 flex-col justify-end pb-10 pt-28 md:pb-20 md:pt-40">
+        <p className="label-mono hero-rise flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.6875rem] text-blaze md:text-[0.75rem]">
+          <span aria-hidden className="blaze-mark" />
+          {hero.eyebrow.map((part, i) => (
+            <span key={part} className={i === hero.eyebrow.length - 1 ? "hidden sm:inline" : undefined}>
+              {i > 0 && (
+                <span aria-hidden className="mr-3">
+                  ·
+                </span>
+              )}
+              {part}
+            </span>
+          ))}
+        </p>
+        <h1 className="display mt-5 text-[clamp(3.25rem,1rem+8vw,8.5rem)] leading-[0.9] text-bone md:mt-8">
+          {lines.map((line, i) => (
+            <span
+              key={line}
+              className={i === lines.length - 1 ? "hero-rise block text-blaze" : "hero-rise block"}
+              style={{ animationDelay: `${120 + i * 110}ms` }}
+            >
+              {line}
+            </span>
+          ))}
+        </h1>
+        <p className="hero-rise mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-bone/85 md:mt-8 md:text-lede" style={{ animationDelay: "420ms" }}>
+          {hero.lede}
+        </p>
+        <div className="hero-rise mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8 md:mt-10" style={{ animationDelay: "520ms" }}>
+          <Button href={links.tickets} size="lg" className="w-full sm:w-auto">
+            Get tickets
+          </Button>
+          <Button href="#trailer" variant="ghost" className="self-start">
+            Watch the trailer
+          </Button>
         </div>
       </div>
 
+      <BillingBlock className="hero-rise" style={{ animationDelay: "660ms" }} />
     </section>
   );
 }

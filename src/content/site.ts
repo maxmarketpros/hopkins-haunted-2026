@@ -10,7 +10,7 @@ export const site = {
   url: "https://www.hopkinshauntedattraction.com",
   tagline: "The sinister woods of the 1800s",
   description:
-    "Hopkins Haunted Attraction is a 30-minute walk-through haunted trail on a historic farm in Simpsonville, SC. Live actors, cinematic sets and relentless scares in Greenville County every October.",
+    "A 30-minute walk-through haunted trail on an 1800s farm in Simpsonville, SC. Live actors and cinematic scares in Greenville County every October.",
   since: 2023,
   footerLine: "Sinister Woods, 1800s.",
 } as const;
@@ -334,6 +334,54 @@ export const aboutSections = {
       "If you think you have experienced every haunted house worth visiting, think again. Hopkins Haunted Attraction delivers a rare combination of authentic Southern hospitality and intense horror that you will not find anywhere else. Gather your courage, bring a few brave friends, and prepare to face the darkness waiting around every corner.",
     ],
   },
+} as const;
+
+/** The one-sheet hero. The H1 is the owner's old claim, cut to four words. */
+export const hero = {
+  /** The last item is hidden on phones. */
+  eyebrow: ["Haunted trail", "Simpsonville, SC", "Since 2023"],
+  h1: ["Greenville’s scariest", "haunted trail."],
+  lede: "Thirty minutes on foot through the sinister woods of an 1800s farm. Live actors, cinematic sets, and no way around.",
+} as const;
+
+export const sellsOutLine = "Halloween weekend sells out. Buy online and skip the line at the gate.";
+
+/**
+ * Approximate drive times to the farm, rounded to 5 minutes.
+ * Check them in Google Maps each season and adjust here; the home page and contact page both read this list.
+ */
+export const driveTimes = [
+  { from: "Simpsonville", minutes: 15 },
+  { from: "Fountain Inn", minutes: 15 },
+  { from: "Mauldin", minutes: 20 },
+  { from: "Downtown Greenville", minutes: 30 },
+  { from: "Greer", minutes: 40 },
+  { from: "Anderson", minutes: 40 },
+  { from: "Spartanburg", minutes: 50 },
+] as const;
+
+/** Towns named in the LocalBusiness schema's service area. */
+export const areaServed = ["Greenville", "Simpsonville", "Mauldin", "Fountain Inn", "Greer", "Anderson", "Spartanburg"] as const;
+
+/** The trailer file, for the VideoObject schema. */
+export const trailer = {
+  url: "/video/trailer.mp4",
+  poster: "/video/trailer-poster.jpg",
+  uploadDate: "2026-09-18",
+  /** ISO 8601 duration; set from the file. */
+  duration: "PT34S",
+} as const;
+
+/** Date each page's copy last changed, for the sitemap. Update when you edit a page. */
+export const pageDates = {
+  "/": "2026-09-18",
+  "/tickets/": "2026-09-18",
+  "/about/": "2026-09-18",
+  "/characters/": "2026-09-18",
+  "/faq/": "2026-09-18",
+  "/join-the-crew/": "2026-09-18",
+  "/contact/": "2026-09-18",
+  "/blog/": "2026-09-18",
 } as const;
 
 /** Old home page, verbatim. */
