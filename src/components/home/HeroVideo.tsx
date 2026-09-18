@@ -1,31 +1,31 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 /**
- * Muted, looping background video for the home hero.
+ * Background loop for the home hero.
  *
+ * - The poster is a real <img> (fetchpriority high) beneath the video, so the first big paint is a 12 KB image,
+ *   not a video frame that arrives after the loop has buffered.
  * - The <video> is emitted as raw HTML so the `muted` attribute is in the markup (React only sets the property,
- *   and Chrome's autoplay policy needs the attribute).
- * - Sources are attached only after the page has loaded, so the poster paints first and the 3 MB loop never
- *   competes with the logo, fonts and JS for bandwidth.
- * - Visitors with reduced-motion or Save-Data keep the poster.
+ *   and Chrome's autoplay policy needs the attribute). Sources attach after the page `load` event.
+ * - Phones (under 768px), reduced-motion and Save-Data visitors keep the poster: no 3 MB download on cellular.
  */
 const POSTER = "/video/hero-poster.webp";
-const VIDEO_HTML = `<video class="hero-fade h-full w-full object-cover" muted loop playsinline preload="none" poster="${POSTER}"></video>`;
+const VIDEO_HTML = `<video class="hero-fade absolute inset-0 h-full w-full object-cover" muted loop playsinline preload="none" style="opacity:0"></video>`;
 const SOURCES = `<source src="/video/hero-loop.webm" type="video/webm"><source src="/video/hero-loop.mp4" type="video/mp4">`;
 
 export function HeroVideo() {
   const wrap = useRef<HTMLDivElement>(null);
-  const [posterOnly, setPosterOnly] = useState(false);
 
   useEffect(() => {
     const v = wrap.current?.querySelector("video");
     if (!v) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const phone = window.matchMedia("(max-width: 767px)").matches;
     const nav = navigator as Navigator & { connection?: { saveData?: boolean } };
-    if (reduce || Boolean(nav.connection?.saveData)) {
-      setPosterOnly(true);
+    if (reduce || phone || Boolean(nav.connection?.saveData)) {
+      v.remove();
       return;
     }
     let timer = 0;
@@ -34,6 +34,7 @@ export function HeroVideo() {
       v.innerHTML = SOURCES;
       v.muted = true;
       v.load();
+      v.style.opacity = "";
       const p = v.play();
       if (p && typeof p.catch === "function") p.catch(() => {});
     };
@@ -50,12 +51,9 @@ export function HeroVideo() {
 
   return (
     <div aria-hidden className="absolute inset-0 -z-10 overflow-hidden bg-soot">
-      {posterOnly ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={POSTER} alt="" className="h-full w-full object-cover" />
-      ) : (
-        <div ref={wrap} className="h-full w-full" dangerouslySetInnerHTML={{ __html: VIDEO_HTML }} />
-      )}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={POSTER} alt="" width={1280} height={720} fetchPriority="high" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+      <div ref={wrap} className="absolute inset-0" dangerouslySetInnerHTML={{ __html: VIDEO_HTML }} />
       {/* cool fog tint, darken for legibility, fade into the page ground */}
       <div className="absolute inset-0 bg-[radial-gradient(80%_70%_at_50%_20%,rgb(47_111_106_/_0.28),transparent_70%)] mix-blend-screen" />
       <div className="absolute inset-0 bg-pine/30" />

@@ -60,6 +60,7 @@ Generated photos in `public/images/generated/` were made with Codex image genera
 
 ## Notes
 
+- `npm run build` runs `next build` and then `scripts/postbuild.mjs`, which writes flat-named copies of Next's segment prefetch payloads (`__next.<segment>.__PAGE__.txt`) so client-side prefetching never 404s on a static host.
 - `next/image` is routed through Netlify Image CDN via `src/lib/image-loader.ts`; in `next dev` images are served as-is.
 - The hero video is muted and skipped for visitors with reduced-motion or data-saver on. The trailer plays with sound on click.
 - Old Wix URLs (`/about-hopkins-haunted-attraction`, `/post/<slug>`, etc.) 301 to the new pages. See `netlify.toml`.

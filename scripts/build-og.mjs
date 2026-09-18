@@ -79,3 +79,7 @@ console.log("icons written");
   await writeFile(path.resolve("public/favicon.ico"), Buffer.concat([header, png]));
   console.log("favicon.ico written");
 }
+
+// small palette PNG used as a CSS mask on the Touch Pass stub
+await sharp(mark).resize(240, 240).png({ palette: true, quality: 70, compressionLevel: 9 }).toFile(path.resolve("public/brand/handprint-mask.png"));
+console.log("handprint-mask.png written");

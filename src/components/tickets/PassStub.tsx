@@ -18,7 +18,7 @@ export function PassStub({ pass, compact, index }: { pass: Pass; compact?: boole
       {pass.slug === "touch-pass" && (
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-6 -top-6 h-40 w-40 opacity-[0.07] [mask-image:url(/brand/handprint-mark.png)] [mask-size:contain] [mask-repeat:no-repeat] bg-blaze"
+          className="pointer-events-none absolute -right-6 -top-6 h-40 w-40 opacity-[0.07] [mask-image:url(/brand/handprint-mask.png)] [mask-size:contain] [mask-repeat:no-repeat] bg-blaze"
         />
       )}
 
