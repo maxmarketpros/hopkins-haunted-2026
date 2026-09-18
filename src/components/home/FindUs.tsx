@@ -40,7 +40,7 @@ export function FindUs() {
             <div>
               <dt className="label-mono text-bone/45">Email</dt>
               <dd className="mt-1.5">
-                <a href={`mailto:${contact.email}`} className="break-all text-bone hover:text-lantern">
+                <a href={`mailto:${contact.email}`} className="[overflow-wrap:anywhere] text-bone hover:text-lantern">
                   {contact.email}
                 </a>
               </dd>

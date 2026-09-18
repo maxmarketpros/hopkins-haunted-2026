@@ -2,10 +2,9 @@ import { season } from "@/content/site";
 
 const TZ = season.timeZone;
 
-/** "2026-10-16" → Date at local opening time in America/New_York (approx. via ISO with fixed offset lookup). */
+/** "2026-10-16" → Date at local opening time in America/New_York. */
 export function nightOpensAt(iso: string): Date {
-  // Eastern Daylight Time applies to the whole 2026 season (DST ends Nov 1, 2026 at 2 AM; the Nov 1 night opens after that,
-  // but 7:30 PM EST vs EDT only shifts by one hour and the countdown targets opening night in October).
+  // Eastern Daylight Time covers October; Nov 1, 2026 is the DST changeover (2 AM), so the Nov 1 night opens in EST.
   const [y, m, d] = iso.split("-").map(Number);
   const isEdt = m < 11;
   const offset = isEdt ? "-04:00" : "-05:00";
@@ -20,30 +19,43 @@ export function lastNight(): Date {
   return nightOpensAt(season.nights[season.nights.length - 1]);
 }
 
-/** Formats an ISO night as e.g. { dow: "FRI", day: "16", month: "OCT" } in the venue timezone. */
+/** e.g. { dow: "FRI", day: "16", month: "OCT" } in the venue timezone. */
 export function nightParts(iso: string) {
   const dt = nightOpensAt(iso);
   const dow = new Intl.DateTimeFormat("en-US", { weekday: "short", timeZone: TZ }).format(dt).toUpperCase();
   const day = new Intl.DateTimeFormat("en-US", { day: "numeric", timeZone: TZ }).format(dt);
   const month = new Intl.DateTimeFormat("en-US", { month: "short", timeZone: TZ }).format(dt).toUpperCase();
-  return { dow, day, month, dt };
+  const long = new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", timeZone: TZ }).format(dt);
+  return { dow, day, month, long, dt };
 }
 
-/** Groups consecutive nights into weekends (gap > 1 day starts a new group). */
+/** Groups consecutive nights into weekends (a gap of more than a day starts a new group). */
 export function nightGroups(nights: readonly string[]) {
   const groups: string[][] = [];
   let prev: Date | null = null;
   for (const n of nights) {
     const dt = nightOpensAt(n);
-    if (prev && (dt.getTime() - prev.getTime()) / 86400000 > 1.5) groups.push([]);
-    if (groups.length === 0) groups.push([]);
+    if (!prev || (dt.getTime() - prev.getTime()) / 86400000 > 1.5) groups.push([]);
     groups[groups.length - 1].push(n);
     prev = dt;
   }
   return groups;
 }
 
+/** A true label for each group: opening weekend, Halloween weekend, closing night, or "Weekend N". */
+export function groupLabel(group: string[], index: number, total: number): string {
+  if (group.some((n) => n.endsWith("-10-31"))) return "Halloween weekend";
+  if (index === 0) return "Opening weekend";
+  if (index === total - 1 && group.length === 1) return "Closing night";
+  if (index === total - 1) return "Closing weekend";
+  return `Weekend ${index + 1}`;
+}
+
 /** ISO date (YYYY-MM-DD) of "today" in the venue timezone. */
 export function todayIso(now = new Date()): string {
   return new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit" }).format(now);
+}
+
+export function formatPostDate(iso: string): string {
+  return new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: TZ }).format(new Date(iso));
 }

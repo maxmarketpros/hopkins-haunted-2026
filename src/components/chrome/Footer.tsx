@@ -49,7 +49,7 @@ export function Footer() {
               {contact.phoneDisplay}
             </a>
             <br />
-            <a href={`mailto:${contact.email}`} className="inline-block break-all hover:text-bone hover:underline decoration-fog underline-offset-4">
+            <a href={`mailto:${contact.email}`} className="inline-block [overflow-wrap:anywhere] hover:text-bone hover:underline decoration-fog underline-offset-4">
               {contact.email}
             </a>
           </address>

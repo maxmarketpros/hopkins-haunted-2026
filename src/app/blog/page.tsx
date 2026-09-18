@@ -1,0 +1,40 @@
+import type { Metadata } from "next";
+import { PostCard } from "@/components/blog/PostCard";
+import { Blaze } from "@/components/system/Blaze";
+import { getAllPosts } from "@/lib/blog";
+import { breadcrumbJsonLd, JsonLd } from "@/lib/jsonld";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Stories from the woods: Simpsonville's haunted history, what to expect on the Hopkins Haunted Attraction trail, tips for your visit, and seasonal jobs in Greenville County.",
+  alternates: { canonical: "/blog/" },
+  openGraph: { title: "Blog | Hopkins Haunted Attraction", url: "/blog/", images: [{ url: "/og/blog.jpg", width: 1200, height: 630 }] },
+};
+
+export default function BlogIndex() {
+  const posts = getAllPosts();
+  const [first, ...rest] = posts;
+  return (
+    <>
+      <section className="fog-seam pb-12 pt-28 md:pb-16 md:pt-36">
+        <div className="container-page">
+          <Blaze label={`Blog · ${posts.length} posts`} className="mb-6" />
+          <h1 className="display text-display-xl text-bone">Stories from the woods</h1>
+          <p className="mt-6 max-w-2xl text-lede text-bone/75">
+            Local haunted history, what to expect on the trail, and how to join the crew. New posts land before the season.
+          </p>
+        </div>
+      </section>
+      <section className="pb-20 md:pb-28">
+        <div className="container-page grid gap-12 md:grid-cols-2 md:gap-x-8 md:gap-y-16">
+          {first && <PostCard post={first} featured />}
+          {rest.map((p) => (
+            <PostCard key={p.slug} post={p} />
+          ))}
+        </div>
+      </section>
+      <JsonLd data={breadcrumbJsonLd([{ name: "Blog", path: "/blog/" }])} />
+    </>
+  );
+}
