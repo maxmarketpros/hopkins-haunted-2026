@@ -7,10 +7,10 @@ export function SeasonStrip() {
       <div className="container-page label-mono flex h-9 items-center justify-between gap-4 overflow-hidden text-[0.6875rem] sm:text-[0.75rem]">
         <p className="flex min-w-0 items-center gap-3 whitespace-nowrap">
           <span>{season.rangeShort}</span>
-          <span aria-hidden className="text-bone/25">·</span>
-          <span>{season.hoursShort}</span>
-          <span aria-hidden className="hidden text-bone/25 sm:inline">·</span>
-          <span className="hidden sm:inline">
+          <span aria-hidden className="hidden text-bone/25 xs:inline">·</span>
+          <span className="hidden xs:inline">{season.hoursShort}</span>
+          <span aria-hidden className="hidden text-bone/25 md:inline">·</span>
+          <span className="hidden md:inline">
             {contact.address.city}, {contact.address.state}
           </span>
         </p>

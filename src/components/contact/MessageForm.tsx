@@ -11,7 +11,6 @@ export function MessageForm() {
       method="POST"
       action="/contact/thanks/"
       data-netlify="true"
-      // @ts-expect-error Netlify attribute
       netlify-honeypot="bot-field"
       className="surface rounded-[2px] p-6 md:p-8"
     >

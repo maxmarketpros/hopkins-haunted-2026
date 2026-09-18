@@ -94,7 +94,7 @@ function domToMarkdown(root) {
     return out;
   };
   const parts = [];
-  for (const el of art.querySelectorAll("h2, h3, h4, p, ul, ol, blockquote")) {
+  for (const el of art.querySelectorAll("h2, h3, h4, h5, h6, p, ul, ol, blockquote")) {
     let parent = el.parentNode;
     let skip = false;
     while (parent && parent !== art) {
@@ -121,7 +121,7 @@ function domToMarkdown(root) {
     if (/^!\[[^\]]*\]\(https?:\/\/example\.com[^)]*\)$/.test(text)) continue;
     if (tag === "h2") parts.push(`## ${text}`);
     else if (tag === "h3") parts.push(`### ${text}`);
-    else if (tag === "h4") parts.push(`#### ${text}`);
+    else if (tag === "h4" || tag === "h5" || tag === "h6") parts.push(`#### ${text}`);
     else if (tag === "blockquote") parts.push(`> ${text}`);
     else parts.push(text);
   }
@@ -167,7 +167,8 @@ for (const p of POSTS) {
   const date = (posting.datePublished ?? "").slice(0, 10);
   const updated = (posting.dateModified ?? "").slice(0, 10);
 
-  let body = article ? String(article.articleBody ?? "").replace(/\r\n/g, "\n").trim() : domToMarkdown(root);
+  // The rendered article is the source of truth; JSON-LD articleBody is a flattened copy with no headings or lists.
+  let body = domToMarkdown(root) || (article ? String(article.articleBody ?? "").replace(/\r\n/g, "\n").trim() : "");
   if (!body) throw new Error(`no body found for ${p.slug}`);
   // drop the repeated title line
   if (body.startsWith(title)) body = body.slice(title.length).trim();

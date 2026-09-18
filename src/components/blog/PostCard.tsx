@@ -20,7 +20,7 @@ export function PostCard({ post, featured }: { post: PostMeta; featured?: boolea
             sizes={featured ? "(min-width: 1024px) 1104px, 100vw" : "(min-width: 768px) 50vw, 100vw"}
             placeholder={blurMap[post.cover] ? "blur" : "empty"}
             blurDataURL={blurMap[post.cover]}
-            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            className="h-full w-full object-cover object-[50%_30%] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
         </figure>
         <div className="mt-5">

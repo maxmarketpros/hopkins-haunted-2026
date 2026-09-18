@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Blaze } from "@/components/system/Blaze";
 import { Button } from "@/components/system/Button";
-import { links, site } from "@/content/site";
+import { links } from "@/content/site";
 import { getAllPosts, getPost, getPostSlugs } from "@/lib/blog";
 import { formatPostDate } from "@/lib/dates";
 import { blogPostingJsonLd, breadcrumbJsonLd, JsonLd } from "@/lib/jsonld";
@@ -142,5 +142,3 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
   );
 }
 
-export const revalidate = false;
-void site;

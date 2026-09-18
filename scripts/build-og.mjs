@@ -1,7 +1,7 @@
 // Composites 1200×630 Open Graph images per page: darkened hero photo + logo + page title. Also app icons.
 // Run: node scripts/build-og.mjs
 import sharp from "sharp";
-import { mkdir } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const OUT = path.resolve("public/og");
@@ -60,3 +60,22 @@ await sharp(mark).resize(512, 512).png().toFile(path.resolve("src/app/icon.png")
 await sharp(mark).resize(180, 180).png().toFile(path.resolve("src/app/apple-icon.png"));
 await sharp(mark).resize(32, 32).png().toFile(path.resolve("public/favicon-32.png"));
 console.log("icons written");
+
+// favicon.ico: an ICO container wrapping the 32px PNG (supported by every modern browser)
+{
+  const png = await sharp(mark).resize(32, 32).png().toBuffer();
+  const header = Buffer.alloc(6 + 16);
+  header.writeUInt16LE(0, 0); // reserved
+  header.writeUInt16LE(1, 2); // type: icon
+  header.writeUInt16LE(1, 4); // count
+  header.writeUInt8(32, 6); // width
+  header.writeUInt8(32, 7); // height
+  header.writeUInt8(0, 8); // palette
+  header.writeUInt8(0, 9); // reserved
+  header.writeUInt16LE(1, 10); // planes
+  header.writeUInt16LE(32, 12); // bpp
+  header.writeUInt32LE(png.length, 14); // size
+  header.writeUInt32LE(22, 18); // offset
+  await writeFile(path.resolve("public/favicon.ico"), Buffer.concat([header, png]));
+  console.log("favicon.ico written");
+}

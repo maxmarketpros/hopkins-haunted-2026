@@ -6,7 +6,7 @@ import { nightOpensAt, todayIso } from "@/lib/dates";
 
 function describe(now: Date): string {
   const today = todayIso(now);
-  const nights = season.nights;
+  const nights = season.nights as readonly string[];
   const first = nightOpensAt(nights[0]);
   const last = nightOpensAt(nights[nights.length - 1]);
 
